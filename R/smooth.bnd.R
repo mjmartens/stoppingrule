@@ -1,9 +1,9 @@
 #' @title Smooth Stopping Rule Boundary
-#' @description Function to Smooth Stopping RUle Boundary from Step to Piecewise Linear Function to
+#' @description Internal function to compute smoothed stopping rule boundary. Takes as input a stopping rule computed by \code{calc.rule()}, where the rejection boundary is a step function, and returns a piecewise linear stopping boundary with identical rejection criteria.
 #'
-#' @param rule A matrix with two columns: the vector of sample sizes at which the stopping rule is evaluated, and a corresponding vector of rejection boundaries at these sizes
+#' @param rule A matrix with two columns: the sample sizes at which the stopping rule is evaluated and their corresponding rejection boundaries
 #'
-#' @return A matrix with two columns: the vector of sample sizes at which the stopping rule is evaluated, and a corresponding vector of smoothed rejection boundaries at these sizes
+#' @return A matrix with two columns: the sample sizes at which the stopping rule is evaluated and their corresponding smoothed rejection boundaries
 smooth.bnd = function(rule) {
   n = rule[rule[,1]>=rule[,2],1]
   b = rule[rule[,1]>=rule[,2],2]

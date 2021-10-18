@@ -20,14 +20,21 @@ calc.rule(ns, p0, type, param = NULL, alpha, iter = 50)
 \item{iter}{The number of iterations used to search for the boundary}
 }
 \value{
-A matrix with two columns: first column is the vector of sample sizes \code{ns}, second column is a corresponding vector of rejection boundaries at these sizes
+A matrix with two columns: the sample sizes \code{ns} and their corresponding rejection boundaries
 }
 \description{
 Calculate a stopping rule for safety monitoring
 }
 \examples{
-calc.rule(ns=1:30,p0=0.15,type="Pocock",alpha=0.10)
+# Binomial Pocock test in 50 patient cohort at 10\% level, expected toxicity rate of 20\%
+calc.rule(ns=1:50,p0=0.20,type="Pocock",alpha=0.10)
 }
 \references{
-Blah
+Goldman, A.I. (1987). Issues in designing sequential stopping rules for monitoring side effects in clinical trials. \emph{Controlled clinical trials}  \strong{8(4)}, 327-37.
+
+Geller, N.L., Follman, D., Leifer, E.S. and Carter, S.L. (2003). Design of early trials in stem cell transplantation: a hybrid frequentist-Bayesian approach. \emph{Advances in Clinical Trial Biostatistics}.
+
+Ivanova, A., Qaqish, B.F. and Schell, M.J. (2005). Continuous toxicity monitoring in phase II trials in oncology. \emph{Biometrics} \strong{61(2)}, 540-545.
+
+Kulldorff, M., Davis, R.L., Kolczak, M., Lewis, E., Lieu, T. and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential analysis} \strong{30(1)}, 58-78.
 }

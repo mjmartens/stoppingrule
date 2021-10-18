@@ -7,11 +7,11 @@
 smooth.bnd(rule)
 }
 \arguments{
-\item{rule}{A matrix with two columns: the vector of sample sizes at which the stopping rule is evaluated, and a corresponding vector of rejection boundaries at these sizes}
+\item{rule}{A matrix with two columns: the sample sizes at which the stopping rule is evaluated and their corresponding rejection boundaries}
 }
 \value{
-A matrix with two columns: the vector of sample sizes at which the stopping rule is evaluated, and a corresponding vector of smoothed rejection boundaries at these sizes
+A matrix with two columns: the sample sizes at which the stopping rule is evaluated and their corresponding smoothed rejection boundaries
 }
 \description{
-Function to Smooth Stopping RUle Boundary from Step to Piecewise Linear Function to
+Internal function to compute smoothed stopping rule boundary. Takes as input a stopping rule computed by \code{calc.rule()}, where the rejection boundary is a step function, and returns a piecewise linear stopping boundary with identical rejection criteria.
 }

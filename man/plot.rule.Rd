@@ -4,19 +4,24 @@
 \alias{plot.rule}
 \title{Plot Stopping Rule}
 \usage{
-\method{plot}{rule}(rule, add = FALSE, ...)
+\method{plot}{rule}(rule, smooth = TRUE, add = FALSE, ...)
 }
 \arguments{
-\item{rule}{A rule object, being a matrix with two columns: the vector of sample sizes at which the stopping rule is evaluated, and a corresponding vector of rejection boundaries at these sizes}
+\item{rule}{A rule object, being a matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries}
+
+\item{smooth}{Indicator (TRUE/FALSE) of whether stopping rule curve should be smoothed}
 
 \item{add}{Indicator (TRUE/FALSE) of whether stopping rule curve should be added to existing plot}
 
 \item{...}{}
 }
 \description{
-Display a stopping rule graphically as a curve in a plot
+Display a stopping rule graphically as a curve
 }
 \examples{
+# Binomial Pocock test in 50 patient cohort at 10\% level, expected toxicity rate of 20\%
 poc_rule = calc.rule(ns=1:30,p0=0.15,type="Pocock",alpha=0.10)
+
+# Plot stopping boundary with smoothing
 plot(poc_rule,col="blue")
 }

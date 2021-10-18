@@ -8,12 +8,16 @@
 #' @param alpha The desired type I error / false positive rate for the stopping rule
 #' @param iter The number of iterations used to search for the boundary
 #'
-#' @return A matrix with two columns: first column is the vector of sample sizes \code{ns}, second column is a corresponding vector of rejection boundaries at these sizes
+#' @return A matrix with two columns: the sample sizes \code{ns} and their corresponding rejection boundaries
 #' @export
 #'
-#' @references Blah
+#' @references Goldman, A.I. (1987). Issues in designing sequential stopping rules for monitoring side effects in clinical trials. \emph{Controlled clinical trials}  \strong{8(4)}, 327-37.
+#' @references Geller, N.L., Follman, D., Leifer, E.S. and Carter, S.L. (2003). Design of early trials in stem cell transplantation: a hybrid frequentist-Bayesian approach. \emph{Advances in Clinical Trial Biostatistics}.
+#' @references Ivanova, A., Qaqish, B.F. and Schell, M.J. (2005). Continuous toxicity monitoring in phase II trials in oncology. \emph{Biometrics} \strong{61(2)}, 540-545.
+#' @references Kulldorff, M., Davis, R.L., Kolczak, M., Lewis, E., Lieu, T. and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential analysis} \strong{30(1)}, 58-78.
 #' @examples
-#' calc.rule(ns=1:30,p0=0.15,type="Pocock",alpha=0.10)
+#' # Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity rate of 20%
+#' calc.rule(ns=1:50,p0=0.20,type="Pocock",alpha=0.10)
 calc.rule = function(ns,p0,type,param=NULL,alpha,iter=50) {
   k = length(ns)
   n = tail(ns,1)

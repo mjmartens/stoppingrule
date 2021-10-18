@@ -7,12 +7,12 @@
 opchars(rule, p)
 }
 \arguments{
-\item{rule}{A matrix with two columns: first column is the vector of sample sizes at which the stopping rule is evaluated; second column is a vector of corresponding vector of rejection boundaries at these sizes}
+\item{rule}{A matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries}
 
 \item{p}{The event probability}
 }
 \value{
-A list with four objects: A vector of rejection probabilities at the evaluations, the power, the expected number of patients evaluated, and the expected number of events
+A list with four objects: the toxicity rate \code{p}, the corresponding rejection probability, the corresponding expected number of evaluated patients, and the corresponding expected number of events
 }
 \description{
 Workhorse function to calculate operating characteristics for a given stopping rule and event rate

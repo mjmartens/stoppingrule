@@ -1,13 +1,16 @@
 #' @title Tabulate Stopping Rule
 #' @description Summarize a stopping rule in a condensed tabular format
 #'
-#' @param rule A matrix with two columns: the vector of sample sizes at which the stopping rule is evaluated, and a corresponding vector of rejection boundaries at these sizes
+#' @param rule A matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries
 #'
-#' @return A matrix with two columns: first column lists ranges of evaluable patients; the second column lists the corresponding rejection boundaries for these ranges
+#' @return A matrix with two columns: the ranges of evaluable patients, and corresponding rejection boundaries for these ranges
 #' @export
 #'
 #' @examples
+#' # Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity rate of 20%
 #' poc_rule = calc.rule(ns=1:30,p0=0.15,type="Pocock",alpha=0.10)
+#'
+#' Tabulate stopping boundary
 #' table.rule(poc_rule)
 table.rule = function(rule) {
   n = max(rule[,1])
