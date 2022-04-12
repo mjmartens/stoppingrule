@@ -11,9 +11,9 @@ calc.rule(ns, p0, type, param = NULL, alpha, iter = 50)
 
 \item{p0}{The toxicity rate under the null hypothesis}
 
-\item{type}{The method used for constructing the stopping rule}
+\item{type}{The method used for constructing the stopping rule. Choices include a Pocock test ("Pocock"), a Wang-Tsiatis test ("WT"), a Bayesian beta-binomial model ("BB"), a truncated SPRT ("SPRT"), and a maximized SPRT ("MaxSPRT").}
 
-\item{param}{Extra parameter(s) needed for Bayesian and SPRT methods}
+\item{param}{Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For Bayesian beta-binomial model, this is the pair of hyperparameters for the beta prior on the toxicity rate. For modified SPRT, this is the targeted alternative toxicity rate p1.}
 
 \item{alpha}{The desired type I error / false positive rate for the stopping rule}
 
@@ -37,4 +37,8 @@ Geller, N.L., Follman, D., Leifer, E.S. and Carter, S.L. (2003). Design of early
 Ivanova, A., Qaqish, B.F. and Schell, M.J. (2005). Continuous toxicity monitoring in phase II trials in oncology. \emph{Biometrics} \strong{61(2)}, 540-545.
 
 Kulldorff, M., Davis, R.L., Kolczak, M., Lewis, E., Lieu, T. and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential analysis} \strong{30(1)}, 58-78.
+
+Pocock, S.J. (1977). Group sequential methods in the design and analysis of clinical trials. \emph{Biometrika} \strong{64(2)}, 191-199.
+
+Wang, S.K. and Tsiatis, A.A. (1987). Approximately optimal one-parameter boundaries for group sequential trials. \emph{Biometrics} \strong{193-199}.
 }

@@ -15,5 +15,5 @@ opchars(rule, p)
 A list with four objects: the toxicity rate \code{p}, the corresponding rejection probability, the corresponding expected number of evaluated patients, and the corresponding expected number of events
 }
 \description{
-Workhorse function to calculate operating characteristics for a given stopping rule and event rate
+Internal workhorse function to calculate operating characteristics for a given stopping rule and event rate
 }

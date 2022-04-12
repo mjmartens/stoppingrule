@@ -1,5 +1,5 @@
 #' @title Stopping Boundary Calculation
-#' @description Workhorse function to calculate stopping boundary for a given method
+#' @description Internal workhorse function to calculate stopping boundary for a given method
 #'
 #' @param n Maximum sample size for safety monitoring
 #' @param p0 The toxicity rate under the null hypothesis

@@ -1,5 +1,5 @@
 #' @title Operating Characteristics Function
-#' @description Workhorse function to calculate operating characteristics for a given stopping rule and event rate
+#' @description Internal workhorse function to calculate operating characteristics for a given stopping rule and event rate
 #'
 #' @param rule A matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries
 #' @param p The event probability

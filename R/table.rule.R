@@ -8,9 +8,9 @@
 #'
 #' @examples
 #' # Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity rate of 20%
-#' poc_rule = calc.rule(ns=1:30,p0=0.15,type="Pocock",alpha=0.10)
+#' poc_rule = calc.rule(ns=1:50,p0=0.20,type="Pocock",alpha=0.10)
 #'
-#' Tabulate stopping boundary
+#' # Tabulate stopping boundary
 #' table.rule(poc_rule)
 table.rule = function(rule) {
   n = max(rule[,1])

@@ -24,8 +24,8 @@ findconst(ns, p0, type, alpha, l, u, iter = 50, param)
 \item{param}{Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For Bayesian beta-binomial model, this is the pair of hyperparameters for the beta prior on the toxicity rate. For modified SPRT, this is the targeted alternative toxicity rate p1.}
 }
 \value{
-
+The calibration constant used for subsequent stopping boundary calculation
 }
 \description{
-Workhorse function to calculate the calibration constant value that attains level alpha for given method
+Internal workhorse function to calculate the calibration constant value that attains level alpha for given method
 }

@@ -21,5 +21,5 @@ calc.bnd(n, p0, cval, type, param)
 A vector of stopping boundaries at the sample sizes 1, 2, ..., n
 }
 \description{
-Workhorse function to calculate stopping boundary for a given method
+Internal workhorse function to calculate stopping boundary for a given method
 }

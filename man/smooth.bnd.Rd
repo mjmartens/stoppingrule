@@ -13,5 +13,5 @@ smooth.bnd(rule)
 A matrix with two columns: the sample sizes at which the stopping rule is evaluated and their corresponding smoothed rejection boundaries
 }
 \description{
-Internal function to compute smoothed stopping rule boundary. Takes as input a stopping rule computed by \code{calc.rule()}, where the rejection boundary is a step function, and returns a piecewise linear stopping boundary with identical rejection criteria.
+Function to compute smoothed stopping rule boundary. Takes as input a stopping rule computed by \code{calc.rule()}, where the rejection boundary is a step function, and returns a piecewise linear stopping boundary with identical rejection criteria.
 }

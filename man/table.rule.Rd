@@ -7,15 +7,18 @@
 table.rule(rule)
 }
 \arguments{
-\item{rule}{A matrix with two columns: the vector of sample sizes at which the stopping rule is evaluated, and a corresponding vector of rejection boundaries at these sizes}
+\item{rule}{A matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries}
 }
 \value{
-A matrix with two columns: first column lists ranges of evaluable patients; the second column lists the corresponding rejection boundaries for these ranges
+A matrix with two columns: the ranges of evaluable patients, and corresponding rejection boundaries for these ranges
 }
 \description{
 Summarize a stopping rule in a condensed tabular format
 }
 \examples{
-poc_rule = calc.rule(ns=1:30,p0=0.15,type="Pocock",alpha=0.10)
+# Binomial Pocock test in 50 patient cohort at 10\% level, expected toxicity rate of 20\%
+poc_rule = calc.rule(ns=1:50,p0=0.20,type="Pocock",alpha=0.10)
+
+# Tabulate stopping boundary
 table.rule(poc_rule)
 }
