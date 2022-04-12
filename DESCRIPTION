@@ -1,6 +1,6 @@
 Package: stoppingrule
 Type: Package
-Title: Create and Evalaute Stopping Rules
+Title: Create and Evaluate Stopping Rules
 Version: 0.1.0
 Author: Michael J. Martens <mmartens@mcw.edu>
 Maintainer: Michael J. Martens <mmartens@mcw.edu>
