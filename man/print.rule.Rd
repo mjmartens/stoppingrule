@@ -7,7 +7,7 @@
 \method{print}{rule}(x, ...)
 }
 \arguments{
-\item{x}{A rule object}
+\item{x}{A rule object, containing a matrix describing a stopping rule}
 
 \item{...}{Other options to be passed to generic \code{plot} function}
 }
