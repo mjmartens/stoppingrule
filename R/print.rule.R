@@ -1,9 +1,10 @@
 #' @title Print Stopping Rule
 #' @description Display a stopping rule in tabular form
 #'
-#' @param x A rule object, being a matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries
+#' @param x A rule object
 #' @param ... Other options to be passed to generic \code{plot} function
 #'
+#' @return A matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries
 #' @export
 #'
 #' @examples

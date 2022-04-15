@@ -7,9 +7,12 @@
 \method{print}{rule}(x, ...)
 }
 \arguments{
-\item{x}{A rule object, being a matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries}
+\item{x}{A rule object}
 
 \item{...}{Other options to be passed to generic \code{plot} function}
+}
+\value{
+A matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries
 }
 \description{
 Display a stopping rule in tabular form

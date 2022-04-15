@@ -4,6 +4,7 @@
 #' @param x A rule object, being a matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries
 #' @param ... Other options to be passed to generic \code{plot} function
 #'
+#' @return No return value; function solely generates a plot
 #' @export
 #'
 #' @examples

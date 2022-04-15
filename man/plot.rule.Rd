@@ -11,6 +11,9 @@
 
 \item{...}{Other options to be passed to generic \code{plot} function}
 }
+\value{
+No return value; function solely generates a plot
+}
 \description{
 Display a stopping rule graphically as a curve
 }

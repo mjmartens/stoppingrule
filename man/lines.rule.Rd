@@ -11,6 +11,9 @@
 
 \item{...}{Other options to be passed to generic \code{lines} function}
 }
+\value{
+No return value; function solely modifies current plot
+}
 \description{
 Add a stopping rule graphically as a curve on current plot
 }

@@ -1,6 +1,6 @@
 #' Create and Evaluate Stopping Rules
 #'
-#' Package provides functions for creating, displaying, and evaluating stopping rules for safety monitoring in clinical studies.
+#' Provides functions for creating, displaying, and evaluating stopping rules for safety monitoring in clinical studies.
 #'
 #'
 #' @docType package
