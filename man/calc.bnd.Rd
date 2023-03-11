@@ -15,7 +15,7 @@ calc.bnd(n, p0, cval, type, param)
 
 \item{type}{The method used for constructing the stopping rule}
 
-\item{param}{Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For Bayesian beta-binomial model, this is the pair of hyperparameters for the beta prior on the toxicity rate. For modified SPRT, this is the targeted alternative toxicity rate p1.}
+\item{param}{Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For Bayesian beta-binomial model, this is the pair of hyperparameters for the beta prior on the toxicity rate. For Chen and Chaloner's method, this is the pair of hyperparameters for the beta prior on the toxicity rate, the targeted alternative toxicity rate p1, and the threshold for the posterior probability that p > p1. For modified SPRT, this is the targeted alternative toxicity rate p1.}
 }
 \value{
 A vector of stopping boundaries at the sample sizes 1, 2, ..., n
