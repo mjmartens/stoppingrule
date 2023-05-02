@@ -4,10 +4,12 @@
 \alias{lines.rule}
 \title{Add Stopping Rule Curve to Current Plot}
 \usage{
-\method{lines}{rule}(x, ...)
+\method{lines}{rule}(x, smooth = TRUE, ...)
 }
 \arguments{
 \item{x}{A rule object, being a matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries}
+
+\item{smooth}{Binary indicator of whether stopping rule boundary should be smoothed by linear interpolation between evaluation points}
 
 \item{...}{Other options to be passed to generic \code{lines} function}
 }

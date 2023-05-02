@@ -4,10 +4,28 @@
 \alias{plot.rule}
 \title{Plot Stopping Rule}
 \usage{
-\method{plot}{rule}(x, ...)
+\method{plot}{rule}(
+  x,
+  smooth = TRUE,
+  xlim = c(0, max(x[, 1])),
+  ylim = c(0, max(x[, 2]) + 1),
+  xlab = "# Evaluable",
+  ylab = "# Events",
+  ...
+)
 }
 \arguments{
 \item{x}{A rule object, being a matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries}
+
+\item{smooth}{Binary indicator of whether stopping rule boundary should be smoothed by linear interpolation between evaluation points}
+
+\item{xlim}{The x limits (x1, x2) of the plot. Note that x1 > x2 is allowed and leads to a ‘reversed axis’.}
+
+\item{ylim}{The y limits of the plot.}
+
+\item{xlab}{The title for the x axis}
+
+\item{ylab}{The title for the y axis}
 
 \item{...}{Other options to be passed to generic \code{plot} function}
 }

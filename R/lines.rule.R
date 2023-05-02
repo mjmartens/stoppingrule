@@ -2,6 +2,7 @@
 #' @description Add a stopping rule graphically as a curve on current plot
 #'
 #' @param x A rule object, being a matrix with two columns: the sample sizes at which sequential testing is performed, and their corresponding rejection boundaries
+#' @param smooth Binary indicator of whether stopping rule boundary should be smoothed by linear interpolation between evaluation points
 #' @param ... Other options to be passed to generic \code{lines} function
 #'
 #' @return No return value; function solely modifies current plot
@@ -16,7 +17,8 @@
 #' # Plot stopping boundaries for stopping rules
 #' plot(poc_rule,col="blue")
 #' lines(bb_rule,col="red")
-lines.rule = function(x,...) {
-  x = smooth.bnd(x)
-    NextMethod("lines",type='l',...)
+lines.rule = function(x,smooth=TRUE,...) {
+  if(smooth==TRUE)  {x = smooth.bnd(x); ltype = 'l';}
+  else {x = unclass(x); x = x[x[,1]>=x[,2],];ltype = 's';}
+  lines(x,type=ltype,...)
 }

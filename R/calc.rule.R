@@ -4,18 +4,18 @@
 #' @param ns A vector of sample sizes at which sequential testing is performed
 #' @param p0 The toxicity rate under the null hypothesis
 #' @param type The method used for constructing the stopping rule. Choices include a Pocock test ("Pocock"), a Wang-Tsiatis test ("WT"), the Bayesian beta-binomial method ("BB") proposed by Geller et al. 2003, the Bayesian beta-binomial method ("CC") proposed by Chen and Chaloner 2006, a truncated SPRT ("SPRT"), and a maximized SPRT ("MaxSPRT").
-#' @param param Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For Bayesian beta-binomial model, this is the pair of hyperparameters for the beta prior on the toxicity rate. For Chen and Chaloner's method, this is the pair of hyperparameters for the beta prior on the toxicity rate, the targeted alternative toxicity rate p1, and the threshold for the posterior probability that p > p1. For modified SPRT, this is the targeted alternative toxicity rate p1.
+#' @param param Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For Bayesian beta-binomial model, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity rate. For Chen and Chaloner's method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity rate, the targeted alternative toxicity rate p1, and the threshold nu for the posterior probability that p > p1. For modified SPRT, this is the targeted alternative toxicity rate p1.
 #' @param alpha The desired type I error / false positive rate for the stopping rule
 #' @param iter The number of iterations used to search for the boundary
 #'
 #' @return A matrix with two columns: the sample sizes \code{ns} and their corresponding rejection boundaries
 #' @export
 #'
-#' @references Chen, C. and Chaloner, K. (2006). A Bayesian stopping rule for a single arm study: With a case study of stem cell transplantation. \emph{Statistics in medicine} \strong{25(17)}, 2956-66.
+#' @references Chen, C. and Chaloner, K. (2006). A Bayesian stopping rule for a single arm study: With a case study of stem cell transplantation. \emph{Statistics in Medicine} \strong{25(17)}, 2956-66.
 #' @references Geller, N.L., Follman, D., Leifer, E.S. and Carter, S.L. (2003). Design of early trials in stem cell transplantation: a hybrid frequentist-Bayesian approach. \emph{Advances in Clinical Trial Biostatistics}.
-#' @references Goldman, A.I. (1987). Issues in designing sequential stopping rules for monitoring side effects in clinical trials. \emph{Controlled clinical trials}  \strong{8(4)}, 327-37.
+#' @references Goldman, A.I. (1987). Issues in designing sequential stopping rules for monitoring side effects in clinical trials. \emph{Controlled Clinical Trials}  \strong{8(4)}, 327-37.
 #' @references Ivanova, A., Qaqish, B.F. and Schell, M.J. (2005). Continuous toxicity monitoring in phase II trials in oncology. \emph{Biometrics} \strong{61(2)}, 540-545.
-#' @references Kulldorff, M., Davis, R.L., Kolczak, M., Lewis, E., Lieu, T. and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential analysis} \strong{30(1)}, 58-78.
+#' @references Kulldorff, M., Davis, R.L., Kolczak, M., Lewis, E., Lieu, T. and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential Analysis} \strong{30(1)}, 58-78.
 #' @references Pocock, S.J. (1977). Group sequential methods in the design and analysis of clinical trials. \emph{Biometrika} \strong{64(2)}, 191-199.
 #' @references Wang, S.K. and Tsiatis, A.A. (1987). Approximately optimal one-parameter boundaries for group sequential trials. \emph{Biometrics} \strong{193-199}.
 #'
