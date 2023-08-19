@@ -12,4 +12,5 @@
 #' @import stats
 #' @import utils
 #' @import graphics
+#' @import pracma
 NULL
