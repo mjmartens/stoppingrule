@@ -22,7 +22,6 @@ calc.bnd.surv <- function(n, p0, cval, tau, type, param = NULL){
       (D + 0.5*(cval^2 - sqrt(4*D*cval^2 + cval^4)))/lambda0
     }
   }
-
   else if (type == "OBF"){
     f <- function(U){
       lambda0*U + cval*sqrt(lambda0*Umax)
@@ -31,7 +30,6 @@ calc.bnd.surv <- function(n, p0, cval, tau, type, param = NULL){
       (D - cval*sqrt(lambda0*Umax))/lambda0
     }
   }
-
   else if (type == "WT"){
     Delta <- param
     f <- function(U){
@@ -41,7 +39,6 @@ calc.bnd.surv <- function(n, p0, cval, tau, type, param = NULL){
       uniroot(function(u){f(u) - D}, lower = 0, upper = 2*n*tau)$root
     }
   }
-
   else if (type == "SPRT"){
     p1 <- param
     lambda1 <- -log(1 - p1)/tau
@@ -52,7 +49,6 @@ calc.bnd.surv <- function(n, p0, cval, tau, type, param = NULL){
       (D*(log(lambda1) - log(lambda0)) - cval)/(lambda1 - lambda0)
     }
   }
-
   else if (type == "MaxSPRT"){
     f <- function(U){
       if (U ==0 ){return(0)}
@@ -62,7 +58,6 @@ calc.bnd.surv <- function(n, p0, cval, tau, type, param = NULL){
       -D/lambda0*lambertWp(-exp(-cval/D - 1))
     }
   }
-
   if (type != "Bayesian"){
     S <- seq(from = max(ceiling(f(0)),1), to = ceiling(f(Umax)))
     # FirstPositive <- which(S > 0)[1]
@@ -77,8 +72,6 @@ calc.bnd.surv <- function(n, p0, cval, tau, type, param = NULL){
     }
     ud[length(ud)] <- Umax
   }
-
-
   if (type == "Bayesian"){
     # hyperparameters
     if (length(param) == 1){

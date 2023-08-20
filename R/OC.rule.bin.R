@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' # Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity probability of 20%
-#' poc = calc.rule(ns=1:50,p0=0.20,alpha=0.10,type="Pocock")
+#' poc = calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="Pocock")
 #'
 #' # Compute operating characteristics at toxicity probabilities of 20%, 25%, 30%, 35%, and 40%
 #' OC.rule.bin(rule=poc,ps=seq(0.2,0.4,0.05))
@@ -20,7 +20,7 @@ OC.rule.bin = function(rule,ps) {
   k = length(ns)
   tab = matrix(0,nrow=length(ps),ncol=4)
   for(i in 1:length(ps)) {
-    op = opchars.bin(rule$Rule,ps[i])
+    op = opchars.bin(rule,ps[i])
     tab[i,] = c(ps[i],op$power,op$Eeval,op$ED)
   }
   colnames(tab) = c("p","Reject Prob","E(evalauted)","E(events)")

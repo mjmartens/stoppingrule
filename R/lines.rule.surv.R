@@ -10,10 +10,10 @@
 #' @export
 #'
 #' @examples
-#' pocock.rule <- calc.rule.s(n = 30, tau = 100, p0 = 0.1, type = "Pocock", alpha = 0.05)
-#' OBF.rule <- calc.rule.s(n = 30, tau = 100, p0 = 0.1, type = "OBF", alpha = 0.05)
+#' pocock.rule <- calc.rule.surv(n = 30, tau = 100, p0 = 0.1, type = "Pocock", alpha = 0.05)
+#' OBF.rule <- calc.rule.surv(n = 30, tau = 100, p0 = 0.1, type = "OBF", alpha = 0.05)
 #' plot(pocock.rule)
-#' lines(OBF.rule, col = "blue')
+#' lines(OBF.rule, col = "blue")
 #'
 lines.rule.surv = function(x,...) {
   x = x$Rule

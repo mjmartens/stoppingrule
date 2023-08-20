@@ -8,7 +8,7 @@
 #' @param param Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For the Geller et al. method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability. For Chen and Chaloner's method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability, the targeted alternative toxicity probability p1, and the threshold nu for the posterior probability that p > p1. For modified SPRT, this is the targeted alternative toxicity probability p1.
 #' @param iter The number of iterations used to search for the boundary
 #'
-#' @return A rule.bin object, which is a list with the following elements: Rule, a two-column matrix with the sample sizes \code{ns} and their corresponding rejection boundaries; ns; p0; type; alpha; param; and cval
+#' @return A rule.bin object, which is a list with the following elements: Rule, a two-column matrix with the sample sizes \code{ns} and their corresponding rejection boundaries; ns; p0; alpha; type; param; and cval
 #' @export
 #'
 #' @references Chen, C. and Chaloner, K. (2006). A Bayesian stopping rule for a single arm study: With a case study of stem cell transplantation. \emph{Statistics in Medicine} \strong{25(17)}, 2956-66.

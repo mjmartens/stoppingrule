@@ -23,7 +23,7 @@ bdryfcn.bin = function(n,p0,cval,type,param=NULL) {
   }
   else if(type=="OBF") {
     val = function(x) {
-      cval * (x/n)^-0.5 * sqrt(x*p0*(1 - p0)) + x*p0
+      cval * sqrt(n*p0*(1 - p0)) + x*p0
     }
   }
   else if(type=="WT") {
@@ -46,10 +46,10 @@ bdryfcn.bin = function(n,p0,cval,type,param=NULL) {
   else if(type=="MaxSPRT") {
     val = function(x) {
       x_min = -cval/log(p0)
-      if(x<=x_min) {return(x+0.01)}
+      if(x<x_min) {return(x+0.01)}
       else {
-        f = function(y) {y*log((y/x)/p0) + ifelse(y<x,(x-y)*log((1-y/x)/(1-p0)),0) - cval}
-        return(uniroot(f,c(x_min,x))$root)
+        f = function(y) {y*log(y/(x*p0)) + ifelse(y<x,(x-y)*log((x-y)/(x-x*p0)),0) - cval}
+        return(uniroot(f,c(max(x_min,x*p0),x))$root)
       }
     }
     val = Vectorize(val)

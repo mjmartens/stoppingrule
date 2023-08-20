@@ -11,7 +11,8 @@
 #' @examples
 #' # Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity probability of 20%
 #' poc_rule = calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="Pocock")
-#' # Bayesian beta-binomial monitoring in 50 patient cohort at 10% level, expected toxicity probability of 20%
+#' # Bayesian beta-binomial monitoring in 50 patient cohort at 10% level,
+#' # expected toxicity probability of 20%
 #' bb_rule = calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="BB",param=c(1,7))
 #'
 #' # Plot stopping boundaries for stopping rules
@@ -19,9 +20,9 @@
 #' lines(bb_rule,col="red")
 
 lines.rule.bin = function(x,smooth=TRUE,...) {
-  if(smooth==TRUE)  {
-    f = bdryfcn.bin(x$n,x$p0,x$cval,x$type,x$param)
-    curve(f,add=TRUE,...)
+  if(smooth==TRUE){
+    f = bdryfcn.bin(max(x$ns),x$p0,x$cval,x$type,x$param)
+    curve(f,xlim=c(which(x$Rule[,1]>=x$Rule[,2])[1],max(x$ns)),add=TRUE,...)
   }
   else if(smooth==FALSE){
     tab = x$Rule; tab = tab[tab[,1]>=tab[,2],]; ltype = 's';

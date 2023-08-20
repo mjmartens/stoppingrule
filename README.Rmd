@@ -18,14 +18,18 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-## R package "stoppingrule": Create and describe early stopping rules for clinical trials
+## R package "stoppingrule": Create and describe early stopping rules for clinical studies
 
-stoppingrule is an R package that provides functionality for constructing, describing, and evaluating stopping rules. Clinical trials often include these rules in order to ensure the safety of study treatments and feasibility of the trial.
+stoppingrule is an R package that provides functionality for constructing,
+describing, and evaluating stopping rules. Clinical trials often include these
+rules in order to ensure the safety of study treatments and feasibility of the
+study.
 
 ## Installation
 
-The current version of stoppingrule is available in this repository. If you have the R package "devtools" installed, stoppingrule can be installed directly from GitHub with:
-
+The current version of stoppingrule is available in this repository. If you have
+the R package "devtools" installed, stoppingrule can be installed directly from
+GitHub with:
 ``` r
 require(devtools)
 install_github("mjmartens/stoppingrule")
@@ -33,32 +37,47 @@ install_github("mjmartens/stoppingrule")
 
 ## Example
 
-Suppose a clinical trial of 50 patients is being developed. Study investigators wish to monitor the occurrence of a specific toxicity type which occurs in 20% of patients in the target population, based on historical data. We want to create a stopping rule to test whether the rate of a given toxicity exceeds 20% using a type I error rate of 10%. Moreover, we wish to check the stopping rule continuously, after each patient completes follow-up for the toxicity endpoint.
+Suppose a clinical trial of 30 patients is being developed. Study investigators
+wish to monitor the occurrence of a specific toxicity type, which occurs in 20%
+of patients in the target population based on historical data. We want to create
+a stopping rule to test whether the rate of a given toxicity exceeds 20% using a
+type I error rate of 10%. Moreover, we wish to check the stopping rule
+continuously, after each patient completes follow-up for the toxicity endpoint.
 
-The function `calc.rule` creates a matrix with the numbers of evaluable patients and their corresponding stopping boundary values:
+The function `calc.rule.bin` creates a 'rule.bin' object which contains a matrix
+with the numbers of evaluable patients and their corresponding stopping boundary
+values as well as the rule's design parameters:
 
 ```{r calc}
 require(stoppingrule)
-poc_rule = calc.rule(ns=1:50,p0=0.20,type="Pocock",alpha=0.10)
-head(poc_rule)
+poc_rule = calc.rule.bin(ns=1:30,p0=0.20,alpha=0.10,type="Pocock")
+print(poc_rule)
 ```
 
-The function call uses the Pocock-type test proposed by Ivanova et al. 2005 to construct the stopping boundaries and displays the boundaries for the first few patients. Note that rejection is impossible with 1 or 2 evaluable patients because the corresponding boundary values exceed these numbers.
+The function call uses the Pocock-type test proposed by Ivanova et al. 2005 to
+construct the stopping boundaries and displays the boundaries for the first few
+patients. Note that rejection is impossible with 1 or 2 evaluable patients
+because the corresponding boundary values exceed these numbers.
 
-The function `table.rule` can produce a succinct summary of the stopping rule for the entire cohort from the rule calculated above: 
+The function `table.rule.bin` can produce a succinct summary of the stopping
+rule for the entire cohort from the rule calculated above:
 
 ```{r table}
-table.rule(poc_rule)
+table.rule.bin(poc_rule)
 ```
 
-We can also obtain a graphical summary of the stopping rule using the `plot` function:
+We can also obtain a graphical summary of the stopping rule using the `plot`
+function:
 
 ```{r plot, echo = FALSE}
 plot(poc_rule)
 ```
 
-Lastly, to assess the operating characteristics of this stopping rule, we can use the `OC.rule` function. The rejection probability and expected numbers of evaluated patients and events are computed at true toxicity rates of p = 20\%, 25%, 30\%, 35%, and 40\% as follows:
+Lastly, the `OC.rule.bin` function can assess the operating characteristics of
+this stopping rule. The rejection probability and expected numbers of evaluated
+patients and events are computed at true toxicity rates of p = 20%, 25%, 30%,
+35%, and 40% as follows:
 
 ```{r OC}
-OC.rule(rule=poc_rule,ps=seq(0.2,0.4,0.05))
+OC.rule.bin(rule=poc_rule,ps=seq(0.2,0.4,0.05))
 ```

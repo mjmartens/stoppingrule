@@ -22,7 +22,7 @@ findconst.bin = function(ns,p0,alpha,type,l,u,iter=50,param) {
     c_curr = (low+upp)/2
     bs = calc.bnd.bin(n,p0,c_curr,type,param)
     bs = bs[ns]
-    typeIrate = sum(opchars.bin(cbind(ns,bs),p0)$reject.prob)
+    typeIrate = sum(opchars.bin(list(Rule=cbind(ns,bs)),p0)$power)
     if(typeIrate <= alpha) {
       const = c_curr
       upp = c_curr

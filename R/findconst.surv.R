@@ -12,7 +12,6 @@
 #' @return The calibration constant used for subsequent stopping boundary calculation
 
 findconst.surv <- function(n, p0, alpha, type, tau, param = NULL){
-
   inner <- function(n, tau, p0, type, cval, param){
     bnd = calc.bnd.surv(n = n, p0 = p0, cval = cval, tau = tau, type = type, param = param)
     return(stopping.prob(bnd, p = p0))

@@ -17,28 +17,10 @@
 #' OC.rule.surv(rule = pocock.rule, ps = seq(0.1, 0.5, 0.1))
 
 OC.rule.surv <- function(rule, ps){
-  tab = matrix(0, nrow = length(ps), ncol = 4)
-  for (i in 1:length(ps)){
-    tab[i,1] <- ps[i]
-    bnd = list(tau = rule$tau, S = rule$Rule[,2], ud = rule$Rule[,1])
-    probs <- stopping.prob(bnd = bnd, p = ps[i])
-    tab[i,2] <- probs$Stop.prob
-    tab[i,3] <- sum(probs$stage.stop.prob*rule$Rule[,1]) +
-      (1 - tab[i,2])*rule$Rule[nrow(rule$Rule),1]
-    dmin <- rule$Rule[1,2]
-    dmax <- rule$Rule[nrow(rule$Rule),2]
-    m <- dmax - dmin + 1
-    s <- 0
-    for (k in 1:m){
-      q <- (dmin + k -1)*probs$stage.stop.prob[k]
-      s <- s + q
-    }
-    t <- 0
-    for (k in 0:(dmax - 1)){
-      q <- k*probs$last.stage[k+1]
-      t <- q + t
-    }
-    tab[i,4] <- s + t
+  tab = matrix(0,nrow=length(ps),ncol=4)
+  for(i in 1:length(ps)) {
+    op = opchars.surv(rule,ps[i])
+    tab[i,] = c(ps[i],op$power,op$EFU,op$ED)
   }
 
   colnames(tab) <- c('p',"Reject Prob","E(Total Follow up time)", "E(Events)")

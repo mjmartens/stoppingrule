@@ -1,12 +1,13 @@
 #' @title Operating Characteristics Function (Binary Data)
-#' @description Internal workhorse function to calculate operating characteristics for a given stopping rule and event rate
+#' @description Internal workhorse function to calculate operating characteristics for a given stopping rule and toxicity probability
 #'
 #' @param rule A 'rule.bin' object calculated by \code{calc.rule.bin()} function
 #' @param p The toxicity probability
 #'
-#' @return A matrix with four columns: the toxicity probabilities \code{ps}, the corresponding rejection probabilities, the corresponding expected numbers of evaluated patients and events at the point of stopping/study end
+#' @return A list with the following elements: p, the corresponding rejection probability, and the corresponding expected numbers of evaluated patients and events at the point of stopping/study end
 
-opchars.bin = function(tab,p) {
+opchars.bin = function(rule,p) {
+  tab = rule$Rule
   ns = tab[,1]
   bs = tab[,2]
   k = length(ns)
@@ -35,5 +36,5 @@ opchars.bin = function(tab,p) {
   ED = sum(exp.events)
   power = sum(reject.prob)
 
-  return(list(reject.prob=reject.prob,power=power,Eeval=Eeval,ED=ED))
+  return(list(p=p,power=power,Eeval=Eeval,ED=ED))
 }

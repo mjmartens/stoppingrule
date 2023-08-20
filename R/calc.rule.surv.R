@@ -10,7 +10,7 @@
 #' a modified sequential probability ratio test ("SPRT"), and a maximized SPRT ("MaxSPRT")
 #' @param param Extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For modified SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the pair of hyperparameters for the gamma prior on the toxicity event rate.
 #'
-#' @return A list of four: 1. A matrix with two columns: total follow up time and their corresponding rejection boundary. 2. value tau to be stored for later use. 3. The calibration constant value used for calculation. 4. Stopping probability at each stage.
+#' @return A rule.surv object, which is a list with the following elements: Rule, a two-column matrix with total follow-up times for each stage and their corresponding rejection boundaries; n; p0; alpha; type; tau; param; and cval
 #' @export
 #'
 #' @references Kulldorff, M., Davis, R. L., Kolczak, M., Lewis, E., Lieu, T., and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential Analysis}, \strong{30(1)}, 58–78.
@@ -23,9 +23,8 @@ calc.rule.surv <- function(n, p0, alpha, type, tau, param=NULL){
   cval <- findconst.surv(n = n, tau = tau, p0 = p0, type = type, param = param, alpha = alpha)
 
   bdry <- calc.bnd.surv(n = n, p0 = p0, cval = cval, tau = tau, type = type, param = param)
-  stage.stop.prob <- stopping.prob(bnd = bdry, p = p0)$stage.stop.prob
-  val <- cbind(floor(bdry$ud), bdry$S)
+  val <- cbind(bdry$ud, bdry$S)
   colnames(val) <- c("Total follow up time","Reject bdry")
-  val2 <- list(Rule = val, tau = tau, cval = cval, stage.stop.prob = stage.stop.prob)
+  val2 <- list(Rule=val,n=n,p0=p0,alpha=alpha,type=type,tau=tau,param=param,cval=cval)
   return(structure(val2, class = "rule.surv"))
 }

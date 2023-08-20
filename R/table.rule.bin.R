@@ -1,7 +1,7 @@
 #' @title Tabulate Stopping Rule (Binary Data)
 #' @description Summarize a stopping rule in a condensed tabular format
 #'
-#' @param rule A 'rule.bin' object calculated by \code{calc.rule.bin()} function
+#' @param x A 'rule.bin' object calculated by \code{calc.rule.bin()} function
 #'
 #' @return A matrix with two columns: the ranges of evaluable patients, and corresponding rejection boundaries for these ranges
 #' @export
@@ -13,10 +13,11 @@
 #' # Tabulate stopping boundary
 #' table.rule.bin(poc_rule)
 
-table.rule.bin = function(rule) {
-  n = max(rule$Rule[,1])
+table.rule.bin = function(x) {
+  rule = x$Rule
+  n = max(rule[,1])
   idx = NULL
-  rule = rule$Rule[rule$Rule[,2]<=rule$Rule[,1],] # Find rows where rejection can happen
+  rule = rule[rule[,2]<=rule[,1],] # Find rows where rejection can happen
   brange = range(rule[,2])
   for(i in 1:(brange[2]-brange[1]+1)){
     idx[i] = which(rule[,2]==i+(brange[1]-1))[1]

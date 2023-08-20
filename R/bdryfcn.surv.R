@@ -42,7 +42,7 @@ bdryfcn.surv = function(n,p0,cval,tau,type,param=NULL) {
     p1 <- param
     lambda1 <- -log(1 - p1)/tau
     val = function(x) {
-      (cval + (lambda1 - lambda0)*x)/log(lambda1/lambda0)
+      return((cval + (lambda1 - lambda0)*x)/log(lambda1/lambda0))
     }
   }
   else if(type=="MaxSPRT") {
