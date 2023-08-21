@@ -12,8 +12,8 @@ stopping.prob.surv <- function(bnd, p){
   tau <- bnd$tau
   lambda <- -log(1 - p)/tau
 
-  S <- bnd$S
-  ud <- bnd$ud
+  S <- bnd$Rule[,2]
+  ud <- bnd$Rule[,1]
   dmin <- S[1]
   dmax <- S[length(S)]
   m <- dmax - dmin + 1

@@ -111,5 +111,5 @@ calc.bnd.surv <- function(n, p0, type,  tau, cval, param = NULL){
     ud[length(ud)] <- Umax
   }
 
-  return(list(tau = tau, S = S, ud = ud))
+  return(list(tau = tau, Rule = cbind(ud,S)))
 }

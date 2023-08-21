@@ -7,7 +7,7 @@
 #' @return A list with the following elements: p, the corresponding rejection probability, and the corresponding expected total follow up time and number of events at the point of stopping/study end
 
 opchars.surv = function(rule,p) {
-  bnd = list(tau = rule$tau, S = rule$Rule[,2], ud = rule$Rule[,1])
+  bnd = list(tau = rule$tau, Rule = rule$Rule)
   probs <- stopping.prob.surv(bnd=bnd,p=p)
   power <- probs$Stop.prob
   EFU <- sum(probs$stage.stop.prob*rule$Rule[,1]) +
