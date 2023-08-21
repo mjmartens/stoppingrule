@@ -4,16 +4,16 @@
 \alias{bdryfcn.bin}
 \title{Stopping Rule Boundary Function (Binary Data)}
 \usage{
-bdryfcn.bin(n, p0, cval, type, param = NULL)
+bdryfcn.bin(n, p0, type, cval, param = NULL)
 }
 \arguments{
 \item{n}{Maximum sample size for safety monitoring}
 
 \item{p0}{The toxicity probability under the null hypothesis}
 
-\item{cval}{Critical value for the stopping rule. For Wang-Tsiatis tests, this is the Delta parameter. For the Bayesian method of Geller et al., this is the threshold on the posterior probability. For the truncated SPRT, this is the threshold on the log likelihood ratio. For the MaxSPRT, this is the threshold on the log generalized likelihood ratio.}
-
 \item{type}{The method used for constructing the stopping rule. Choices include a Pocock test ("Pocock"), an O'Brien-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian beta-binomial method ("BB") proposed by Geller et al. 2003, the Bayesian beta-binomial method ("CC") proposed by Chen and Chaloner 2006, a truncated SPRT ("SPRT"), and a maximized SPRT ("MaxSPRT").}
+
+\item{cval}{Critical value for the stopping rule. For Wang-Tsiatis tests, this is the Delta parameter. For the Bayesian method of Geller et al., this is the threshold on the posterior probability. For the truncated SPRT, this is the threshold on the log likelihood ratio. For the MaxSPRT, this is the threshold on the log generalized likelihood ratio.}
 
 \item{param}{Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For the Geller et al. method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability. For Chen and Chaloner's method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability, the targeted alternative toxicity probability p1, and the threshold nu for the posterior probability that p > p1. For modified SPRT, this is the targeted alternative toxicity probability p1.}
 }

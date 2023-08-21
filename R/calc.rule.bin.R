@@ -59,7 +59,7 @@ calc.rule.bin = function(ns,p0,alpha,type,param=NULL,iter=50) {
     u = 0.5*qchisq(1-alpha/n,1)
     const = findconst.bin(ns,p0,alpha,"MaxSPRT",l,u,iter,NA)
   }
-  bs = calc.bnd.bin(n,p0,const,type,param)
+  bs = calc.bnd.bin(n,p0,type,const,param)
 
   # Truncate boundary to match stagewise sample sizes requested
   if(type=="Pocock") {const = 1-const}

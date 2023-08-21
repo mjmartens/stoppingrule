@@ -18,6 +18,6 @@
 
 plot.rule.surv <- function(x,xlim=c(0,max(x$Rule[,1])),ylim=c(0,max(x$Rule[,2])+1),
                            xlab="Total Exposure Time",ylab="# Events",...) {
-  f = bdryfcn.surv(x$n,x$p0,x$cval,x$tau,x$type,x$param)
+  f = bdryfcn.surv(x$n,x$p0,x$type,x$tau,x$cval,x$param)
   curve(f,xlim=xlim,ylim=ylim,xlab=xlab,ylab=ylab,...)
 }

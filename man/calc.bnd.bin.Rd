@@ -4,16 +4,16 @@
 \alias{calc.bnd.bin}
 \title{Stopping Boundary Calculation (Binary Data)}
 \usage{
-calc.bnd.bin(n, p0, cval, type, param)
+calc.bnd.bin(n, p0, type, cval, param)
 }
 \arguments{
 \item{n}{Maximum sample size for safety monitoring}
 
 \item{p0}{The toxicity probability under the null hypothesis}
 
-\item{cval}{Critical value for stopping rule method}
-
 \item{type}{The method used for constructing the stopping rule}
+
+\item{cval}{Critical value for stopping rule method}
 
 \item{param}{Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For the Geller et al. method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability. For Chen and Chaloner's method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability, the targeted alternative toxicity probability p1, and the threshold nu for the posterior probability that p > p1. For modified SPRT, this is the targeted alternative toxicity probability p1.}
 }

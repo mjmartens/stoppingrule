@@ -22,7 +22,7 @@
 calc.rule.surv <- function(n, p0, alpha, type, tau, param=NULL){
   cval <- findconst.surv(n = n, tau = tau, p0 = p0, type = type, param = param, alpha = alpha)
 
-  bdry <- calc.bnd.surv(n = n, p0 = p0, cval = cval, tau = tau, type = type, param = param)
+  bdry <- calc.bnd.surv(n = n, p0 = p0, type = type, tau = tau, cval = cval, param = param)
   val <- cbind(bdry$ud, bdry$S)
   colnames(val) <- c("Total follow up time","Reject bdry")
   val2 <- list(Rule=val,n=n,p0=p0,alpha=alpha,type=type,tau=tau,param=param,cval=cval)

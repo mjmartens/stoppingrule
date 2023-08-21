@@ -3,17 +3,17 @@
 #'
 #' @param n Maximum sample size for safety monitoring
 #' @param p0 The toxicity probability under the null hypothesis
-#' @param cval Critical value for stopping rule method
 #' @param type The method used for constructing the stopping rule
+#' @param cval Critical value for stopping rule method
 #' @param param Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For the Geller et al. method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability. For Chen and Chaloner's method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability, the targeted alternative toxicity probability p1, and the threshold nu for the posterior probability that p > p1. For modified SPRT, this is the targeted alternative toxicity probability p1.
 #'
 #' @return A vector of stopping boundaries at the sample sizes 1, 2, ..., n
 
-calc.bnd.bin = function(n,p0,cval,type,param) {
+calc.bnd.bin = function(n,p0,type,cval,param) {
   bs = NULL
   if(type!="CC") {
-    if(type=="Pocock") {f = bdryfcn.bin(n,p0,1-cval,type,param)}
-    else {f = bdryfcn.bin(n,p0,cval,type,param)}
+    if(type=="Pocock") {f = bdryfcn.bin(n,p0,type,1-cval,param)}
+    else {f = bdryfcn.bin(n,p0,type,cval,param)}
     bs = ceiling(f(1:n))
   }
   else if(type=="CC") {

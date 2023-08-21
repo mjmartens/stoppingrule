@@ -23,7 +23,7 @@ plot.rule.bin = function(x,smooth=TRUE,xlim=c(0,max(x$ns)),
                      ylim=c(0,max(x$Rule[,2])+1),xlab="# Evaluable",
                      ylab="# Events",...) {
   if(smooth==TRUE){
-    f = bdryfcn.bin(max(x$ns),x$p0,x$cval,x$type,x$param)
+    f = bdryfcn.bin(max(x$ns),x$p0,x$type,x$cval,x$param)
     plot(NULL,xlim=xlim,ylim=ylim,xlab=xlab,ylab=ylab)
     curve(f,xlim=c(which(x$Rule[,1]>=x$Rule[,2])[1],max(x$ns)),add=TRUE,...)
   }

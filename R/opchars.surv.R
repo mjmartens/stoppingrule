@@ -8,7 +8,7 @@
 
 opchars.surv = function(rule,p) {
   bnd = list(tau = rule$tau, S = rule$Rule[,2], ud = rule$Rule[,1])
-  probs <- stopping.prob(bnd=bnd,p=p)
+  probs <- stopping.prob.surv(bnd=bnd,p=p)
   power <- probs$Stop.prob
   EFU <- sum(probs$stage.stop.prob*rule$Rule[,1]) +
     (1-power)*rule$Rule[nrow(rule$Rule),1]

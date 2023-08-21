@@ -15,7 +15,8 @@
 #' plot(pocock.rule)
 #' lines(OBF.rule, col = "blue")
 #'
+
 lines.rule.surv = function(x,...) {
-  x = x$Rule
-  NextMethod("lines",type='l',...)
+  f = bdryfcn.surv(x$n,x$p0,x$type,x$tau,x$cval,x$param)
+  curve(f,add=TRUE,...)
 }

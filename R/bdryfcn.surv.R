@@ -4,16 +4,16 @@
 #' @param n Maximum sample size for safety monitoring
 #' @param tau Observation period
 #' @param p0 The probability of a toxicity occurring in \code{tau} units of time under the null hypothesis
-#' @param cval Critical for the stopping rule. For Wang-Tsiatis tests, this is the Delta parameter. For the Bayesian Gamma-Poisson method, this is the threshold on the posterior probability. For the truncated SPRT, this is the threshold on the log likelihood ratio. For the MaxSPRT, this is the threshold on the log generalized likelihood ratio.
 #' @param type The method used for constructing the stopping rule. Choices including a Pocock test ("Pocock"),
 #' a O'Brein-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian Gamma-Poisson method ("Bayesian"),
 #' a modified sequential probability ratio test ("SPRT"), and a maximized SPRT ("MaxSPRT")
+#' @param cval Critical for the stopping rule. For Wang-Tsiatis tests, this is the Delta parameter. For the Bayesian Gamma-Poisson method, this is the threshold on the posterior probability. For the truncated SPRT, this is the threshold on the log likelihood ratio. For the MaxSPRT, this is the threshold on the log generalized likelihood ratio.
 #' @param param Extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For modified SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the pair of hyperparameters for the gamma prior on the toxicity event rate.
 #'
 #' @return A univariate function that defines the rejection boundary at any number of evaluable patients
 #' @export
 
-bdryfcn.surv = function(n,p0,cval,tau,type,param=NULL) {
+bdryfcn.surv = function(n,p0,type,tau,cval,param=NULL) {
   lambda0 <- -log(1 - p0)/tau
   Umax <- n*tau
   if(type=="Pocock") {

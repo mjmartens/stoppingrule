@@ -21,7 +21,7 @@
 
 lines.rule.bin = function(x,smooth=TRUE,...) {
   if(smooth==TRUE){
-    f = bdryfcn.bin(max(x$ns),x$p0,x$cval,x$type,x$param)
+    f = bdryfcn.bin(max(x$ns),x$p0,x$type,x$cval,x$param)
     curve(f,xlim=c(which(x$Rule[,1]>=x$Rule[,2])[1],max(x$ns)),add=TRUE,...)
   }
   else if(smooth==FALSE){

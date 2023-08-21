@@ -20,7 +20,7 @@ findconst.bin = function(ns,p0,alpha,type,l,u,iter=50,param) {
   for(i in 1:iter) {
     const = upp
     c_curr = (low+upp)/2
-    bs = calc.bnd.bin(n,p0,c_curr,type,param)
+    bs = calc.bnd.bin(n,p0,type,c_curr,param)
     bs = bs[ns]
     typeIrate = sum(opchars.bin(list(Rule=cbind(ns,bs)),p0)$power)
     if(typeIrate <= alpha) {
