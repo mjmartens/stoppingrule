@@ -1,13 +1,12 @@
-#' Create and Evaluate Stopping Rules
+#' Create and Evaluate Stopping Rules for Safety Monitoring
 #'
 #' Provides functions for creating, displaying, and evaluating stopping rules for safety monitoring in clinical studies.
 #'
 #'
-#' @docType package
-#'
 #' @author Michael J. Martens \email{mmartens@mcw.edu}
 #'
 #' @name stoppingrule
+#' @aliases stoppingrule-package
 #'
 #' @import stats
 #' @import utils

@@ -1,6 +1,6 @@
 Package: stoppingrule
 Type: Package
-Title: Create and Evaluate Stopping Rules
+Title: Create and Evaluate Stopping Rules for Safety Monitoring
 Version: 0.3.0
 Author: Michael J. Martens [aut,cre], Qinghua Lian [aut]
 Maintainer: Michael J. Martens <mmartens@mcw.edu>
