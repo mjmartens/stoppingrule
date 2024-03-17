@@ -41,8 +41,8 @@ stopping boundary values as well as the rule’s design parameters:
 ``` r
 require(stoppingrule)
 #> Loading required package: stoppingrule
-poc_rule = calc.rule.bin(ns=1:30,p0=0.20,alpha=0.10,type="Pocock")
-print(poc_rule)
+bb_rule = calc.rule.bin(ns=1:30,p0=0.20,alpha=0.10,type="BB",param=c(0.6,2.4))
+print(bb_rule)
 #> $Rule
 #>       N evaluable Reject bdry
 #>  [1,]           1           2
@@ -51,7 +51,7 @@ print(poc_rule)
 #>  [4,]           4           3
 #>  [5,]           5           4
 #>  [6,]           6           4
-#>  [7,]           7           4
+#>  [7,]           7           5
 #>  [8,]           8           5
 #>  [9,]           9           5
 #> [10,]          10           5
@@ -61,7 +61,7 @@ print(poc_rule)
 #> [14,]          14           7
 #> [15,]          15           7
 #> [16,]          16           7
-#> [17,]          17           8
+#> [17,]          17           7
 #> [18,]          18           8
 #> [19,]          19           8
 #> [20,]          20           8
@@ -72,7 +72,7 @@ print(poc_rule)
 #> [25,]          25          10
 #> [26,]          26          10
 #> [27,]          27          10
-#> [28,]          28          11
+#> [28,]          28          10
 #> [29,]          29          11
 #> [30,]          30          11
 #> 
@@ -84,42 +84,46 @@ print(poc_rule)
 #> [1] 0.2
 #> 
 #> $type
-#> [1] "Pocock"
+#> [1] "BB"
 #> 
 #> $alpha
 #> [1] 0.1
 #> 
 #> $param
-#> NULL
+#> [1] 0.6 2.4
 #> 
 #> $cval
-#> [1] 0.03766345
+#> [1] 0.9630823
 #> 
 #> attr(,"class")
 #> [1] "rule.bin"
 ```
 
-The function call uses the Pocock-type test proposed by Ivanova et
-al. 2005 to construct the stopping boundaries and displays the
-boundaries for the first few patients. Note that rejection is impossible
-with 1 or 2 evaluable patients because the corresponding boundary values
-exceed these numbers.
+The function call uses the Bayesian beta-binomial model approach
+proposed by Geller et al. 2003 to construct the stopping boundaries and
+displays the boundaries for the first few patients. A weakly informative
+Beta(0.6,2.4) is specified for the toxicity probability. The
+\`bb_rule\$Rule’ element of the output displays the number evaluable and
+stopping criteria for all analyses; other elements contain the design
+parameters and boundary parameter for the stopping rule. For this rule,
+rejection is impossible with 1 or 2 evaluable patients because the
+corresponding boundary values exceeds these numbers.
 
 The function `table.rule.bin` can produce a succinct summary of the
 stopping rule for the entire cohort from the rule calculated above:
 
 ``` r
-table.rule.bin(poc_rule)
+table.rule.bin(bb_rule)
 #>       N evaluable Reject If N >=
 #>  [1,] "3 - 4"     "3"           
-#>  [2,] "5 - 7"     "4"           
-#>  [3,] "8 - 10"    "5"           
+#>  [2,] "5 - 6"     "4"           
+#>  [3,] "7 - 10"    "5"           
 #>  [4,] "11 - 13"   "6"           
-#>  [5,] "14 - 16"   "7"           
-#>  [6,] "17 - 20"   "8"           
+#>  [5,] "14 - 17"   "7"           
+#>  [6,] "18 - 20"   "8"           
 #>  [7,] "21 - 24"   "9"           
-#>  [8,] "25 - 27"   "10"          
-#>  [9,] "28 - 30"   "11"
+#>  [8,] "25 - 28"   "10"          
+#>  [9,] "29 - 30"   "11"
 ```
 
 We can also obtain a graphical summary of the stopping rule using the
@@ -129,15 +133,15 @@ We can also obtain a graphical summary of the stopping rule using the
 
 Lastly, the `OC.rule.bin` function can assess the operating
 characteristics of this stopping rule. The rejection probability and
-expected numbers of evaluated patients and events are computed at true
+expected numbers of events at the time of stopping are computed at true
 toxicity rates of p = 20%, 25%, 30%, 35%, and 40% as follows:
 
 ``` r
-OC.rule.bin(rule=poc_rule,ps=seq(0.2,0.4,0.05))
-#>         p Reject Prob E(evalauted) E(events)
-#> [1,] 0.20  0.09915263     28.16703  5.713406
-#> [2,] 0.25  0.23312769     26.04001  6.635003
-#> [3,] 0.30  0.42603085     22.98251  7.074752
-#> [4,] 0.35  0.63398556     19.37012  7.024542
-#> [5,] 0.40  0.80576733     15.75017  6.620068
+OC.rule.bin(rule=bb_rule,ps=seq(0.2,0.4,0.05))
+#>         p Reject Prob E(events)
+#> [1,] 0.20  0.09957367  5.651197
+#> [2,] 0.25  0.23832301  6.536293
+#> [3,] 0.30  0.43615256  6.926712
+#> [4,] 0.35  0.64555222  6.819377
+#> [5,] 0.40  0.81491087  6.355803
 ```
