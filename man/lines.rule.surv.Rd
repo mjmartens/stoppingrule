@@ -7,7 +7,7 @@
 \method{lines}{rule.surv}(x, ...)
 }
 \arguments{
-\item{x}{A 'rule.surv' object calculated by \code{calc.rule.surv()} function}
+\item{x}{A \code{rule.surv} object calculated by \code{calc.rule.surv()} function}
 
 \item{...}{Other options to be passed to generic \code{lines()} function}
 }
@@ -18,9 +18,9 @@ No return value, function solely modifies current plot
 Add a survival stopping rule graphically as a curve on current plot for time-to-event data
 }
 \examples{
-pocock.rule <- calc.rule.surv(n = 30, tau = 100, p0 = 0.1, type = "Pocock", alpha = 0.05)
-OBF.rule <- calc.rule.surv(n = 30, tau = 100, p0 = 0.1, type = "OBF", alpha = 0.05)
-plot(pocock.rule)
-lines(OBF.rule, col = "blue")
+poc_rule = calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="Pocock",tau=100)
+gp_rule = calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="GP",tau=100,param=c(1,1000))
+plot(poc_rule)
+lines(gp_rule,col="red")
 
 }

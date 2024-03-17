@@ -21,7 +21,7 @@ findconst.bin(ns, p0, alpha, type, l, u, iter = 50, param)
 
 \item{iter}{The number of iterations used to search for the boundary}
 
-\item{param}{Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For the Geller et al. method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability. For Chen and Chaloner's method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability, the targeted alternative toxicity probability p1, and the threshold nu for the posterior probability that p > p1. For modified SPRT, this is the targeted alternative toxicity probability p1.}
+\item{param}{A vector of the extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For the Geller et al. method, this is the vector of hyperparameters (a,b) for the beta prior on the toxicity probability. For Chen and Chaloner's method, this is the vector (a,b,p1,nu), containing the hyperparameters (a,b) for the beta prior on the toxicity probability, the targeted alternative toxicity probability p1, and the threshold nu for the posterior probability that the true toxicity probability p > p1. For truncated SPRT, this is the targeted alternative toxicity probability p1.}
 }
 \value{
 The calibration constant used for subsequent stopping boundary calculation

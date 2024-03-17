@@ -2,7 +2,7 @@
 #' @description
 #' Internal workhouse function to calculate the stopping probability given a rejection boundary for time-to-event data
 #'
-#' @param bnd A 'bnd' object calculated by \code{calc.bnd.surv} function
+#' @param bnd A list object calculated by \code{calc.bnd.surv} function
 #' @param p True toxicity probability
 #'
 #' @return A list of three: stopping probabilities at each stage, total stopping probability, and non-stopping probabilities of each possible number of events at the last stage.

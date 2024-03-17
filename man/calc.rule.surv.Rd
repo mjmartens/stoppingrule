@@ -9,26 +9,43 @@ calc.rule.surv(n, p0, alpha, type, tau, param = NULL)
 \arguments{
 \item{n}{Maximum sample size for safety monitoring}
 
-\item{p0}{The probability of a toxicity occurring in \code{tau}] units of time under the null hypothesis}
+\item{p0}{The probability of a toxicity occurring in \code{tau} units of time under the null hypothesis}
 
-\item{alpha}{The desired type I error/false positive rate for the stopping rule}
+\item{alpha}{The nominal type I error/false positive rate for the stopping rule,
+under an assumption that the cumulative number of events follows a Poisson process
+over the study duration.}
 
 \item{type}{The method used for constructing the stopping rule. Choices including a Pocock test ("Pocock"),
-a O'Brein-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian Gamma-Poisson method ("Bayesian"),
-a modified sequential probability ratio test ("SPRT"), and a maximized SPRT ("MaxSPRT")}
+a O'Brein-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian Gamma-Poisson method ("GP"),
+a truncated sequential probability ratio test ("SPRT"), and a maximized SPRT ("MaxSPRT")}
 
-\item{tau}{Observation period}
+\item{tau}{Length of observation period}
 
-\item{param}{Extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For modified SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the pair of hyperparameters for the gamma prior on the toxicity event rate.}
+\item{param}{A vector of the extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For truncated SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the vector of hyperparameters (shape,rate) for the gamma prior on the toxicity event rate.}
 }
 \value{
-A rule.surv object, which is a list with the following elements: Rule, a two-column matrix with total follow-up times for each stage and their corresponding rejection boundaries; n; p0; alpha; type; tau; param; and cval
+A rule.surv object, which is a list with the following elements: Rule, a two-column matrix with total follow-up times for each stage and their corresponding rejection boundaries; \code{n}; \code{p0}; \code{alpha}; \code{type}; \code{tau}; \code{param}; and cval, the boundary parameter for the rule
 }
 \description{
 Calculate a stopping rule for safety monitoring for time-to-event data
 }
 \examples{
-calc.rule.surv(n = 30, p0 = 0.1, alpha = 0.05, type = "Pocock", tau = 100)
+# Survival Pocock test in 50 patient cohort at 10\% level, expected toxicity
+# probability of 20\%, 100 day observation period
+calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="Pocock",tau=100)
+
+# Survival Wang-Tsiatis test with Delta = 0.25 in 50 patient cohort at 10\% level,
+# expected toxicity probability of 20\%, 100 day observation period
+calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="WT",tau=100,param=0.25)
+
+# Gamma-Poisson test with hyperparameters (1, 1000) in 100 patient cohort at 5\% level,
+# expected toxicity probability of 10\%, 60 day observation period
+calc.rule.surv(n=100,p0=0.10,alpha=0.05,type="GP",tau=60,param=c(1,1000))
+
+# Truncated exponential SPRT with p1 = 0.3 in 100 patient cohort at 5\% level,
+# expected toxicity probability of 10\%, 60 day observation period
+calc.rule.surv(n=100,p0=0.10,alpha=0.05,type="SPRT",tau=60,param=0.3)
+
 }
 \references{
 Kulldorff, M., Davis, R. L., Kolczak, M., Lewis, E., Lieu, T., and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential Analysis}, \strong{30(1)}, 58–78.

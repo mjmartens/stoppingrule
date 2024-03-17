@@ -9,15 +9,17 @@ findconst.surv(n, p0, alpha, type, tau, param = NULL)
 \arguments{
 \item{n}{Maximum sample size for safety monitoring}
 
-\item{p0}{The probability of a toxicity occurring in \code{tau}] units of time under the null hypothesis}
+\item{p0}{The probability of a toxicity occurring in \code{tau} units of time under the null hypothesis}
 
-\item{alpha}{The desired type I error/false positive rate for the stopping rule}
+\item{alpha}{The nominal type I error/false positive rate for the stopping rule,
+under an assumption that the cumulative number of events follows a Poisson process
+over the study duration.}
 
 \item{type}{The method used for constructing the stopping rule}
 
-\item{tau}{Observation period}
+\item{tau}{Length of observation period}
 
-\item{param}{Extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For modified SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the pair of hyperparameters for the gamma prior on the toxicity event rate.}
+\item{param}{A vector of the extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For truncated SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the vector of hyperparameters (shape,rate) for the gamma prior on the toxicity event rate.}
 }
 \value{
 The calibration constant used for subsequent stopping boundary calculation

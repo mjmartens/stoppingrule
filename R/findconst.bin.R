@@ -8,7 +8,7 @@
 #' @param l Lower starting value of bracket for calibration constant
 #' @param u Upper starting value of bracket for calibration constant
 #' @param iter The number of iterations used to search for the boundary
-#' @param param Extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For the Geller et al. method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability. For Chen and Chaloner's method, this is the pair of hyperparameters (a,b) for the beta prior on the toxicity probability, the targeted alternative toxicity probability p1, and the threshold nu for the posterior probability that p > p1. For modified SPRT, this is the targeted alternative toxicity probability p1.
+#' @param param A vector of the extra parameter(s) needed for certain stopping rule methods. For binomial Wang-Tsiatis tests, this is the Delta parameter. For the Geller et al. method, this is the vector of hyperparameters (a,b) for the beta prior on the toxicity probability. For Chen and Chaloner's method, this is the vector (a,b,p1,nu), containing the hyperparameters (a,b) for the beta prior on the toxicity probability, the targeted alternative toxicity probability p1, and the threshold nu for the posterior probability that the true toxicity probability p > p1. For truncated SPRT, this is the targeted alternative toxicity probability p1.
 #'
 #' @return The calibration constant used for subsequent stopping boundary calculation
 

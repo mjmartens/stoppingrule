@@ -1,7 +1,7 @@
 #' @title Plot Stopping Rule (Binary Data)
 #' @description Display a stopping rule graphically as a curve
 #'
-#' @param x A 'rule.bin' object calculated by \code{calc.rule.bin()} function
+#' @param x A \code{rule.bin} object calculated by \code{calc.rule.bin()} function
 #' @param smooth Binary indicator of whether stopping rule boundary should be smoothed by linear interpolation between evaluation points
 #' @param xlim The x limits (x1, x2) of the plot. Note that x1 > x2 is allowed and leads to a ‘reversed axis’.
 #' @param ylim The y limits of the plot.
@@ -16,8 +16,13 @@
 #' # Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity probability of 20%
 #' poc_rule = calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="Pocock")
 #'
+#' # Bayesian beta-binomial method of Geller et al. in 50 patient cohort at 10% level,
+#' # expected toxicity probability of 20%
+#' bb_rule = calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="BB",param=c(2,8))
+#'
 #' # Plot stopping boundary with smoothing
 #' plot(poc_rule,col="blue")
+#' lines(bb_rule,col="red")
 
 plot.rule.bin = function(x,smooth=TRUE,xlim=c(0,max(x$ns)),
                      ylim=c(0,max(x$Rule[,2])+1),xlab="# Evaluable",

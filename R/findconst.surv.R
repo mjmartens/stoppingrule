@@ -3,11 +3,13 @@
 #' Internal workhorse function to calculate the calibration constant value that attains level alpha for given method for time-to-event data
 #'
 #' @param n Maximum sample size for safety monitoring
-#' @param tau Observation period
-#' @param p0 The probability of a toxicity occurring in \code{tau}] units of time under the null hypothesis
-#' @param alpha The desired type I error/false positive rate for the stopping rule
+#' @param tau Length of observation period
+#' @param p0 The probability of a toxicity occurring in \code{tau} units of time under the null hypothesis
+#' @param alpha The nominal type I error/false positive rate for the stopping rule,
+#' under an assumption that the cumulative number of events follows a Poisson process
+#' over the study duration.
 #' @param type The method used for constructing the stopping rule
-#' @param param Extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For modified SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the pair of hyperparameters for the gamma prior on the toxicity event rate.
+#' @param param A vector of the extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For truncated SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the vector of hyperparameters (shape,rate) for the gamma prior on the toxicity event rate.
 #'
 #' @return The calibration constant used for subsequent stopping boundary calculation
 
@@ -20,7 +22,7 @@ findconst.surv <- function(n, p0, alpha, type, tau, param = NULL){
   if (type == 'Pocock'|type == 'OBF'|type == 'WT'){
     l = qnorm(1-alpha)
     u = qnorm(1 - alpha/(n*p0))
-  } else if (type == "Bayesian"){
+  } else if (type == "GP"){
     lambda0 <- -log(1 - p0)/tau
     Umax <- n*tau
 
@@ -38,7 +40,7 @@ findconst.surv <- function(n, p0, alpha, type, tau, param = NULL){
     u = 0.5*qchisq(1-alpha/(n*p0),1)
   }
 
-  cval <- uniroot(function(cval) {
+  cval = uniroot(function(cval) {
     inner(n = n, tau = tau, p0 = p0, type = type, param = param, cval = cval)$Stop.prob - alpha
   }, lower = l, upper = u, extendInt = "yes")$root
 

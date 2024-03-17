@@ -7,7 +7,7 @@
 stopping.prob.surv(bnd, p)
 }
 \arguments{
-\item{bnd}{A 'bnd' object calculated by \code{calc.bnd.surv} function}
+\item{bnd}{A list object calculated by \code{calc.bnd.surv} function}
 
 \item{p}{True toxicity probability}
 }

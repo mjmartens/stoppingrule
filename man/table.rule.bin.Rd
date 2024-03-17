@@ -7,7 +7,7 @@
 table.rule.bin(x)
 }
 \arguments{
-\item{x}{A 'rule.bin' object calculated by \code{calc.rule.bin()} function}
+\item{x}{A \code{rule.bin} object calculated by \code{calc.rule.bin()} function}
 }
 \value{
 A matrix with two columns: the ranges of evaluable patients, and corresponding rejection boundaries for these ranges

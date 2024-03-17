@@ -4,15 +4,19 @@
 \alias{opchars.bin}
 \title{Operating Characteristics Function (Binary Data)}
 \usage{
-opchars.bin(rule, p)
+opchars.bin(rule, p, tau = NULL, A = NULL)
 }
 \arguments{
-\item{rule}{A 'rule.bin' object calculated by \code{calc.rule.bin()} function}
+\item{rule}{A \code{rule.bin} object calculated by \code{calc.rule.bin()} function}
 
 \item{p}{The toxicity probability}
+
+\item{tau}{Length of observation period}
+
+\item{A}{Length of the enrollment period.}
 }
 \value{
-A list with the following elements: p, the corresponding rejection probability, and the corresponding expected numbers of evaluated patients and events at the point of stopping/study end
+A list containing the toxicity probability \code{p}, and the corresponding rejection probability and expected number of events. If \code{tau} and {A} are also specified, the expected number of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
 }
 \description{
 Internal workhorse function to calculate operating characteristics for a given stopping rule and toxicity probability

@@ -1,18 +1,19 @@
 #' @title Stopping Boundary Calculation (Survival Data)
 #' @description
 #' Internal workhorse function to calculate stopping boundary for a given method for time-to-event data
+#'
 #' @param n Maximum sample size for safety monitoring
-#' @param tau Observation period
+#' @param tau Length of observation period
 #' @param p0 The probability of a toxicity occurring in \code{tau} units of time under the null hypothesis
 #' @param type The method used for constructing the stopping rule
-#' @param cval Critical for the stopping rule. For Wang-Tsiatis tests, this is the Delta parameter. For the Bayesian Gamma-Poisson method, this is the threshold on the posterior probability. For the truncated SPRT, this is the threshold on the log likelihood ratio. For the MaxSPRT, this is the threshold on the log generalized likelihood ratio.
-#' @param param Extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For modified SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the pair of hyperparameters for the gamma prior on the toxicity event rate.
+#' @param cval Critical value for the stopping rule. For Wang-Tsiatis tests, this is the Delta parameter. For the Bayesian Gamma-Poisson method, this is the threshold on the posterior probability. For the truncated SPRT, this is the threshold on the log likelihood ratio. For the MaxSPRT, this is the threshold on the log generalized likelihood ratio.
+#' @param param A vector of the extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For truncated SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the vector of hyperparameters (shape,rate) for the gamma prior on the toxicity event rate.
 #'
 #' @return A list of three items: tau, number of events that can trigger a stop, and the corresponding total follow up time.
 
 calc.bnd.surv <- function(n, p0, type,  tau, cval, param = NULL){
-  lambda0 <- -log(1 - p0)/tau
-  Umax <- n*tau
+  lambda0 = -log(1 - p0)/tau
+  Umax = n*tau
 
   if (type == "Pocock"){
     f <- function(U){
@@ -58,7 +59,7 @@ calc.bnd.surv <- function(n, p0, type,  tau, cval, param = NULL){
       -D/lambda0*lambertWp(-exp(-cval/D - 1))
     }
   }
-  if (type != "Bayesian"){
+  if (type != "GP"){
     S <- seq(from = max(ceiling(f(0)),1), to = ceiling(f(Umax)))
     # FirstPositive <- which(S > 0)[1]
     # S <- S[FirstPositive:length(S)]
@@ -72,7 +73,7 @@ calc.bnd.surv <- function(n, p0, type,  tau, cval, param = NULL){
     }
     ud[length(ud)] <- Umax
   }
-  if (type == "Bayesian"){
+  if (type == "GP"){
     # hyperparameters
     if (length(param) == 1){
       k <- param

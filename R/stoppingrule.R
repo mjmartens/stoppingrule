@@ -11,5 +11,6 @@
 #' @import stats
 #' @import utils
 #' @import graphics
+#' @import matrixStats
 #' @import pracma
 NULL

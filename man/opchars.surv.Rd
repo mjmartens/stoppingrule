@@ -4,15 +4,23 @@
 \alias{opchars.surv}
 \title{Operating Characteristics Function (Survival Data)}
 \usage{
-opchars.surv(rule, p)
+opchars.surv(rule, p, MC, A, s = 1)
 }
 \arguments{
-\item{rule}{A 'rule.surv' object calculated by \code{calc.rule.surv()} function}
+\item{rule}{A \code{rule.surv} object calculated by \code{calc.rule.surv()} function}
 
 \item{p}{The toxicity probability}
+
+\item{MC}{Number of Monte Carlo replicates to simulate for estimating operating characteristics. If \code{MC} = 0, a Poisson process assumption on the event process is used to compute operating characteristics.}
+
+\item{A}{Length of the enrollment period. Only required if \code{MC} > 0.}
+
+\item{s}{Shape parameter for the Weibull distribution used to simulate event times. Only required if \code{MC} > 0.}
 }
 \value{
-A list with the following elements: p, the corresponding rejection probability, and the corresponding expected total follow up time and number of events at the point of stopping/study end
+A list containing the rejection probability \code{p}, and the corresponding
+rejection probability and number of events. If \code{MC} is not NULL, the expected
+number of enrolled patients and total follow up time are also included.
 }
 \description{
 Internal workhorse function to calculate operating characteristics for a given stopping rule and toxicity probability

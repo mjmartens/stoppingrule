@@ -50,34 +50,38 @@ values as well as the rule's design parameters:
 
 ```{r calc}
 require(stoppingrule)
-poc_rule = calc.rule.bin(ns=1:30,p0=0.20,alpha=0.10,type="Pocock")
-print(poc_rule)
+bb_rule = calc.rule.bin(ns=1:30,p0=0.20,alpha=0.10,type="BB",param=c(0.6,2.4))
+print(bb_rule)
 ```
 
-The function call uses the Pocock-type test proposed by Ivanova et al. 2005 to
-construct the stopping boundaries and displays the boundaries for the first few
-patients. Note that rejection is impossible with 1 or 2 evaluable patients
-because the corresponding boundary values exceed these numbers.
+The function call uses the Bayesian beta-binomial model approach proposed by 
+Geller et al. 2003 to construct the stopping boundaries and displays the
+boundaries for the first few patients. A weakly informative Beta(0.6,2.4) is 
+specified for the toxicity probability. The `bb_rule$Rule' element of the output
+displays the number evaluable and stopping criteria for all analyses; other
+elements contain the design parameters and boundary parameter for the stopping
+rule. For this rule, rejection is impossible with 1 or 2 evaluable patients
+because the corresponding boundary values exceeds these numbers.
 
 The function `table.rule.bin` can produce a succinct summary of the stopping
 rule for the entire cohort from the rule calculated above:
 
 ```{r table}
-table.rule.bin(poc_rule)
+table.rule.bin(bb_rule)
 ```
 
 We can also obtain a graphical summary of the stopping rule using the `plot`
 function:
 
 ```{r plot, echo = FALSE}
-plot(poc_rule)
+plot(bb_rule)
 ```
 
 Lastly, the `OC.rule.bin` function can assess the operating characteristics of
-this stopping rule. The rejection probability and expected numbers of evaluated
-patients and events are computed at true toxicity rates of p = 20%, 25%, 30%,
+this stopping rule. The rejection probability and expected numbers of events at
+the time of stopping are computed at true toxicity rates of p = 20%, 25%, 30%,
 35%, and 40% as follows:
 
 ```{r OC}
-OC.rule.bin(rule=poc_rule,ps=seq(0.2,0.4,0.05))
+OC.rule.bin(rule=bb_rule,ps=seq(0.2,0.4,0.05))
 ```

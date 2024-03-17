@@ -7,7 +7,7 @@
 table.rule.surv(rule, dec = 0)
 }
 \arguments{
-\item{rule}{A 'rule.surv' object calculated by \code{calc.rule.surv()} function}
+\item{rule}{A \code{rule.surv} object calculated by \code{calc.rule.surv()} function}
 
 \item{dec}{Number of decimal places to which the stagewise total follow-up times should be rounded}
 }
@@ -18,6 +18,6 @@ A matrix with two columns: total follow up time and their corresponding rejectio
 Summarize a stopping rule in a condensed tabular format
 }
 \examples{
-pocock.rule <- calc.rule.surv(n = 30, p0 = 0.1, alpha = 0.05, tau = 100, type = "Pocock")
-table.rule.surv(pocock.rule)
+gp_rule = calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="GP",tau=100,param=c(1,1000))
+table.rule.surv(gp_rule,2)
 }
