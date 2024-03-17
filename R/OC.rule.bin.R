@@ -6,7 +6,7 @@
 #' @param tau Length of observation period
 #' @param A Length of the enrollment period.
 #'
-#' @return A matrix with columns containing the toxicity probabilities \code{ps}, the corresponding rejection probabilities, and the corresponding expected number of events. If \code{tau} and {A} are also specified, the expected numbers of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
+#' @return A matrix with columns containing the toxicity probabilities \code{ps}, the corresponding rejection probabilities, and the corresponding expected number of events. If \code{tau} and \code{A} are also specified, the expected numbers of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
 #'
 #' @details
 #' If \code{tau} and \code{A} are specified, the expected number of events includes events among patients who are still pending evaluation at the time of early stopping, computed under an assumption of a random uniform accrual distribution. Otherwise, only events that occurred prior to stopping are included, as the number of events occurring in pending patients depends on \code{tau} and \code{A}.

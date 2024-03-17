@@ -20,7 +20,7 @@ A wrapper function to compute operating characteristics for a stopping rule at a
 \examples{
 bb_rule = calc.rule(data.type="bin",ns=1:50,p0=0.20,alpha=0.10,type="BB",param=c(2,8))
 gp_rule = calc.rule(data.type="surv",n=50,p0=0.20,alpha=0.10,type="GP",tau=60,param=c(1,1000))
-OC.rule(data.type="bin", rule = bb_rule, ps = seq(0.1, 0.5, 0.1))
-OC.rule(data.type="bin", rule = bb_rule, ps = seq(0.1, 0.5, 0.1), tau = 60, A = 730)
-OC.rule(data.type="surv",rule = gp_rule, ps = seq(0.1, 0.5, 0.1),MC=1000, A=730)
+OC.rule(data.type="bin",rule=bb_rule,ps=seq(0.1, 0.5, 0.1))
+OC.rule(data.type="bin",rule=bb_rule,ps=seq(0.1, 0.5, 0.1),tau=60,A=730)
+OC.rule(data.type="surv",rule=gp_rule,ps=seq(0.1, 0.5, 0.1),MC=1000, A=730)
 }

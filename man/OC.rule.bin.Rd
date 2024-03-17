@@ -16,7 +16,7 @@ OC.rule.bin(rule, ps, tau = NULL, A = NULL)
 \item{A}{Length of the enrollment period.}
 }
 \value{
-A matrix with columns containing the toxicity probabilities \code{ps}, the corresponding rejection probabilities, and the corresponding expected number of events. If \code{tau} and {A} are also specified, the expected numbers of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
+A matrix with columns containing the toxicity probabilities \code{ps}, the corresponding rejection probabilities, and the corresponding expected number of events. If \code{tau} and \code{A} are also specified, the expected numbers of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
 }
 \description{
 Compute operating characteristics for a stopping rule at a set of toxicity rates. Characteristics calculated include the overall rejection probability, the expected number of patients evaluated, and the expected number of events.

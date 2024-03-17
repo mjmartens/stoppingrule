@@ -6,7 +6,7 @@
 #' @param tau Length of observation period
 #' @param A Length of the enrollment period.
 #'
-#' @return A list containing the toxicity probability \code{p}, and the corresponding rejection probability and expected number of events. If \code{tau} and {A} are also specified, the expected number of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
+#' @return A list containing the toxicity probability \code{p}, and the corresponding rejection probability and expected number of events. If \code{tau} and \code{A} are also specified, the expected number of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
 
 opchars.bin = function(rule, p, tau = NULL, A = NULL){
   n_k = rule$Rule[,1]

@@ -24,23 +24,16 @@
 #'
 #' @examples
 #' set.seed(13)
-#' rule = calc.rule.surv(n=50,p0=0.10,alpha=0.05,type="Pocock",tau=100)
-#' rule = calc.rule.surv(n=20,p0=0.10,alpha=0.05,type="WT",tau=100,param=0.25)
-#' rule = calc.rule.surv(n=50,p0=0.10,alpha=0.05,type="GP",tau=100,param=c(-log(1-0.1),100))
-#'
-#' sims = simtrials.surv(rule,0.1,10000,730)
-#' mean(sims$stopped)
-#'
 #' wt_rule = calc.rule.surv(n=46,p0=0.15,alpha=0.10,type="WT",tau=100,param=0.25)
-#' sims = simtrials.surv(wt_rule,0.15,10000,1095)
+#' sims = simtrials.surv(rule=wt_rule,p=0.15,MC=1000,A=1095)
 #' c(mean(sims$stopped),mean(sims$n.Toxicity),mean(sims$n.Enrolled),mean(sims$Calendar.Time))
-#' sims = simtrials.surv(wt_rule,0.35,10000,1095)
+#' sims = simtrials.surv(rule=wt_rule,p=0.35,MC=1000,A=1095)
 #' c(mean(sims$stopped),mean(sims$n.Toxicity),mean(sims$n.Enrolled),mean(sims$Calendar.Time))
 #'
 #' gp_rule = calc.rule.surv(n=46,p0=0.15,alpha=0.10,type="GP",tau=100,param=11.5*c(-log(1-0.15),100))
-#' sims = simtrials.surv(gp_rule,0.15,10000,1095)
+#' sims = simtrials.surv(rule=gp_rule,p=0.15,MC=1000,A=1095)
 #' c(mean(sims$stopped),mean(sims$n.Toxicity),mean(sims$n.Enrolled),mean(sims$Calendar.Time))
-#' sims = simtrials.surv(gp_rule,0.35,10000,1095)
+#' sims = simtrials.surv(rule=gp_rule,p=0.35,MC=1000,A=1095)
 #' c(mean(sims$stopped),mean(sims$n.Toxicity),mean(sims$n.Enrolled),mean(sims$Calendar.Time))
 #'
 

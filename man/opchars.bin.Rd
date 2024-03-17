@@ -16,7 +16,7 @@ opchars.bin(rule, p, tau = NULL, A = NULL)
 \item{A}{Length of the enrollment period.}
 }
 \value{
-A list containing the toxicity probability \code{p}, and the corresponding rejection probability and expected number of events. If \code{tau} and {A} are also specified, the expected number of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
+A list containing the toxicity probability \code{p}, and the corresponding rejection probability and expected number of events. If \code{tau} and \code{A} are also specified, the expected number of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
 }
 \description{
 Internal workhorse function to calculate operating characteristics for a given stopping rule and toxicity probability

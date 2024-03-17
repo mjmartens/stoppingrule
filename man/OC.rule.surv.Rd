@@ -45,14 +45,14 @@ OC.rule.surv(rule=gp_rule,ps=seq(0.2,0.4,0.05),MC=0)
 set.seed(82426499)
 ps = seq(0.15,0.35,0.05)
 wt_rule = calc.rule.surv(n=46,p0=0.15,alpha=0.10,type="WT",tau=100,param=0.25)
-OC.rule.surv(wt_rule,ps,10000,1095)
+OC.rule.surv(rule=wt_rule,ps=ps,MC=1000,A=1095)
 
 p1h = 0.3418071
 sp_rule = calc.rule.surv(n=46,p0=0.15,alpha=0.10,type="SPRT",tau=100,param=p1h)
-OC.rule.surv(sp_rule,ps,10000,1095)
+OC.rule.surv(rule=sp_rule,ps=ps,MC=1000,A=1095)
 
 gp_rule = calc.rule.surv(n=46,p0=0.15,alpha=0.10,type="GP",tau=100,
                           param=11.5*c(-log(1-0.15),100))
-OC.rule.surv(gp_rule,ps,10000,1095)
+OC.rule.surv(rule=gp_rule,ps=ps,MC=1000,A=1095)
 
 }
