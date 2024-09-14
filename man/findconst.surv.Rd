@@ -4,7 +4,7 @@
 \alias{findconst.surv}
 \title{Search for Calibration Value (Survival Data)}
 \usage{
-findconst.surv(n, p0, alpha, type, tau, param = NULL)
+findconst.surv(n, p0, alpha, type, tau, maxInf = "expected", param = NULL)
 }
 \arguments{
 \item{n}{Maximum sample size for safety monitoring}
@@ -18,6 +18,10 @@ over the study duration.}
 \item{type}{The method used for constructing the stopping rule}
 
 \item{tau}{Length of observation period}
+
+\item{maxInf}{Specification of the maximum information (maximum exposure time) used for designing the
+stopping rule. Options include the expected exposure time for n patients used H0 ("expected") and the
+maximum possible exposure time ("maximum"). Default is "expected" (expected exposure time in cohort).}
 
 \item{param}{A vector of the extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For truncated SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the vector of hyperparameters (shape,rate) for the gamma prior on the toxicity event rate.}
 }

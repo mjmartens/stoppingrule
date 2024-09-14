@@ -54,7 +54,7 @@ Ivanova, A., Qaqish, B.F. and Schell, M.J. (2005). Continuous toxicity monitorin
 
 Kulldorff, M., Davis, R.L., Kolczak, M., Lewis, E., Lieu, T. and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential Analysis} \strong{30(1)}, 58-78.
 
-Martens, M.J. and Logan, B.R. (2023). Statistical Rules for Safety Monitoring in Clinical Trials. \emph{Clinical Trials} \strong{Article in press}.
+Martens, M.J. and Logan, B.R. (2024). Statistical Rules for Safety Monitoring in Clinical Trials. \emph{Clinical Trials} \strong{21(2)}, 152-161.
 
 Pocock, S.J. (1977). Group sequential methods in the design and analysis of clinical trials. \emph{Biometrika} \strong{64(2)}, 191-199.
 

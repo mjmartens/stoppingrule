@@ -4,7 +4,7 @@
 \alias{calc.rule.surv}
 \title{Stopping Rule Calculation (Survival Data)}
 \usage{
-calc.rule.surv(n, p0, alpha, type, tau, param = NULL)
+calc.rule.surv(n, p0, alpha, type, tau, maxInf = "expected", param = NULL)
 }
 \arguments{
 \item{n}{Maximum sample size for safety monitoring}
@@ -20,6 +20,10 @@ a O'Brein-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian Gamma-P
 a truncated sequential probability ratio test ("SPRT"), and a maximized SPRT ("MaxSPRT")}
 
 \item{tau}{Length of observation period}
+
+\item{maxInf}{Specification of the maximum information (maximum exposure time) used for designing the
+stopping rule. Options include the expected exposure time for n patients used H0 ("expected") and the
+maximum possible exposure time ("maximum"). Default is "expected" (expected exposure time in cohort).}
 
 \item{param}{A vector of the extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For truncated SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the vector of hyperparameters (shape,rate) for the gamma prior on the toxicity event rate.}
 }

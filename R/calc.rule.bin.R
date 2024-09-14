@@ -16,7 +16,7 @@
 #' @references Goldman, A.I. (1987). Issues in designing sequential stopping rules for monitoring side effects in clinical trials. \emph{Controlled Clinical Trials}  \strong{8(4)}, 327-37.
 #' @references Ivanova, A., Qaqish, B.F. and Schell, M.J. (2005). Continuous toxicity monitoring in phase II trials in oncology. \emph{Biometrics} \strong{61(2)}, 540-545.
 #' @references Kulldorff, M., Davis, R.L., Kolczak, M., Lewis, E., Lieu, T. and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential Analysis} \strong{30(1)}, 58-78.
-#' @references Martens, M.J. and Logan, B.R. (2023). Statistical Rules for Safety Monitoring in Clinical Trials. \emph{Clinical Trials} \strong{Article in press}.
+#' @references Martens, M.J. and Logan, B.R. (2024). Statistical Rules for Safety Monitoring in Clinical Trials. \emph{Clinical Trials} \strong{21(2)}, 152-161.
 #' @references Pocock, S.J. (1977). Group sequential methods in the design and analysis of clinical trials. \emph{Biometrika} \strong{64(2)}, 191-199.
 #' @references Wang, S.K. and Tsiatis, A.A. (1987). Approximately optimal one-parameter boundaries for group sequential trials. \emph{Biometrics} \strong{193-199}.
 #'

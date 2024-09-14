@@ -10,6 +10,9 @@
 #' @param type The method used for constructing the stopping rule. Choices including a Pocock test ("Pocock"),
 #' a O'Brein-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian Gamma-Poisson method ("GP"),
 #' a truncated sequential probability ratio test ("SPRT"), and a maximized SPRT ("MaxSPRT")
+#' @param maxInf Specification of the maximum information (maximum exposure time) used for designing the
+#' stopping rule. Options include the expected exposure time for n patients used H0 ("expected") and the
+#' maximum possible exposure time ("maximum"). Default is "expected" (expected exposure time in cohort).
 #' @param param A vector of the extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For truncated SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the vector of hyperparameters (shape,rate) for the gamma prior on the toxicity event rate.
 #'
 #' @return A rule.surv object, which is a list with the following elements: Rule, a two-column matrix with total follow-up times for each stage and their corresponding rejection boundaries; \code{n}; \code{p0}; \code{alpha}; \code{type}; \code{tau}; \code{param}; and cval, the boundary parameter for the rule
@@ -36,12 +39,14 @@
 #' calc.rule.surv(n=100,p0=0.10,alpha=0.05,type="SPRT",tau=60,param=0.3)
 #'
 
-calc.rule.surv <- function(n, p0, alpha, type, tau, param=NULL){
-  cval <- findconst.surv(n = n, tau = tau, p0 = p0, type = type, param = param, alpha = alpha)
+calc.rule.surv = function(n, p0, alpha, type, tau, maxInf="expected", param=NULL){
+  cval = findconst.surv(n,p0,alpha,type,tau,param=param,maxInf=maxInf)
 
-  bdry <- calc.bnd.surv(n = n, p0 = p0, type = type, tau = tau, cval = cval, param = param)
-  val <- bdry$Rule
-  colnames(val) <- c("Total follow up time","Reject bdry")
-  val2 <- list(Rule=val,n=n,p0=p0,alpha=alpha,type=type,tau=tau,param=param,cval=cval)
+  bdry = calc.bnd.surv(n=n,p0=p0,type=type,tau=tau,cval=cval,maxInf=maxInf,
+                       param=param)
+  val = bdry$Rule
+  colnames(val) = c("Total follow up time","Reject bdry")
+  val2 = list(Rule=val,n=n,p0=p0,alpha=alpha,type=type,tau=tau,maxInf=maxInf,
+              param=param,cval=cval)
   return(structure(val2, class = "rule.surv"))
 }

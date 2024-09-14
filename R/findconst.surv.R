@@ -9,13 +9,21 @@
 #' under an assumption that the cumulative number of events follows a Poisson process
 #' over the study duration.
 #' @param type The method used for constructing the stopping rule
+#' @param maxInf Specification of the maximum information (maximum exposure time) used for designing the
+#' stopping rule. Options include the expected exposure time for n patients used H0 ("expected") and the
+#' maximum possible exposure time ("maximum"). Default is "expected" (expected exposure time in cohort).
 #' @param param A vector of the extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For truncated SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the vector of hyperparameters (shape,rate) for the gamma prior on the toxicity event rate.
 #'
 #' @return The calibration constant used for subsequent stopping boundary calculation
 
-findconst.surv <- function(n, p0, alpha, type, tau, param = NULL){
+findconst.surv = function(n, p0, alpha, type, tau, maxInf="expected", param = NULL){
   inner <- function(n, tau, p0, type, cval, param){
-    bnd = calc.bnd.surv(n = n, p0 = p0,  type = type, tau = tau, cval = cval, param = param)
+    bnd = calc.bnd.surv(n=n,p0=p0,type=type,tau=tau,cval=cval,maxInf=maxInf,param=param)
+    lambda0 <- -log(1 - p0)/tau
+    if(maxInf=="maximum") {Umax = n*tau}
+    else if(maxInf=="expected") {Umax = n*p0/lambda0}
+    bnd$Rule[which(bnd$Rule[,1]>Umax),1] = Umax
+
     return(stopping.prob.surv(bnd, p = p0))
   }
 
@@ -24,7 +32,8 @@ findconst.surv <- function(n, p0, alpha, type, tau, param = NULL){
     u = qnorm(1 - alpha/(n*p0))
   } else if (type == "GP"){
     lambda0 <- -log(1 - p0)/tau
-    Umax <- n*tau
+    if(maxInf=="maximum") {Umax = n*tau}
+    else if(maxInf=="expected") {Umax = n*p0/lambda0}
 
     if (length(param) == 1){
       k <- param

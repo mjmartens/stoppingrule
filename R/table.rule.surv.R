@@ -20,6 +20,6 @@ table.rule.surv <- function(rule,dec=0){
                     sprintf(paste0("%.",dec,"f"),rule[k,1]))
   }
   val <- cbind(TFT, rule[,2])
-  colnames(val) <- c("Total follow up time","Reject bdry")
+  colnames(val) <- c("Total Follow Up Time","Reject Bdry")
   return(val)
 }

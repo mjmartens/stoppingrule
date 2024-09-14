@@ -4,10 +4,10 @@
 \alias{calc.bnd.surv}
 \title{Stopping Boundary Calculation (Survival Data)}
 \usage{
-calc.bnd.surv(n, p0, type, tau, cval, param = NULL)
+calc.bnd.surv(n, p0, type, tau, cval, maxInf = "expected", param = NULL)
 }
 \arguments{
-\item{n}{Maximum sample size for safety monitoring}
+\item{n}{maximum sample size for safety monitoring}
 
 \item{p0}{The probability of a toxicity occurring in \code{tau} units of time under the null hypothesis}
 
@@ -16,6 +16,10 @@ calc.bnd.surv(n, p0, type, tau, cval, param = NULL)
 \item{tau}{Length of observation period}
 
 \item{cval}{Critical value for the stopping rule. For Wang-Tsiatis tests, this is the Delta parameter. For the Bayesian Gamma-Poisson method, this is the threshold on the posterior probability. For the truncated SPRT, this is the threshold on the log likelihood ratio. For the MaxSPRT, this is the threshold on the log generalized likelihood ratio.}
+
+\item{maxInf}{Specification of the maximum information (maximum exposure time) used for designing the
+stopping rule. Options include the expected exposure time for n patients used H0 ("expected") and the
+maximum possible exposure time ("maximum"). Default is "expected" (expected exposure time in cohort).}
 
 \item{param}{A vector of the extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For truncated SPRT, this is the targeted alternative toxicity probability p1. For Bayesian Gamma-Poisson model, this is the vector of hyperparameters (shape,rate) for the gamma prior on the toxicity event rate.}
 }

@@ -17,10 +17,11 @@ table.rule.bin = function(x) {
   rule = x$Rule
   n = max(rule[,1])
   idx = NULL
-  rule = rule[rule[,2]<=rule[,1],] # Find rows where rejection can happen
-  brange = range(rule[,2])
-  for(i in 1:(brange[2]-brange[1]+1)){
-    idx[i] = which(rule[,2]==i+(brange[1]-1))[1]
+  rule = rule[rule[,2]<=rule[,1],]
+  # Find rows where rejection can happen
+  bdry = unique(rule[,2])
+  for(i in 1:length(bdry)){
+    idx[i] = which(rule[,2]==bdry[i])[1]
   }
   rule = rule[idx,]
 
@@ -34,7 +35,7 @@ table.rule.bin = function(x) {
   else {n_eval[k] = n}
 
   val = cbind(n_eval,rule[,2])
-  colnames(val) = c("N evaluable","Reject If N >=")
+  colnames(val) = c("N Evaluable","Reject Bdry")
 
   return(val)
 }
