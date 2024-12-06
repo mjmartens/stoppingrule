@@ -94,7 +94,7 @@ simtrials.surv = function(rule,p,MC,A,s=1){
   Calendar.time = colMins(indices*observed[,4*1:MC-1],na.rm=TRUE)
   n.Toxicity = colMins(indices*observed[,4*1:MC-2],na.rm=TRUE)
   Total.followup = colMins(indices*observed[,4*1:MC-3],na.rm=TRUE)
-  n.Enrolled = colMins(indices*matrix(1:n,nrow=n,ncol=MC),na.rm=TRUE)
+  n.Enrolled = colMins(indices*observed[,4*1:MC],na.rm=TRUE)
 
   monitor[1:MC,] = cbind(n=n,p0=p0,p=p,tau=tau,A=A,alpha=alpha,type="GP",cval=rule$cval,Total.followup=Total.followup,
                                     n.Toxicity=n.Toxicity,Calendar.Time=Calendar.time,n.Enrolled=n.Enrolled,rejects,laststage)

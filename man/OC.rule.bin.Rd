@@ -13,7 +13,7 @@ OC.rule.bin(rule, ps, tau = NULL, A = NULL)
 
 \item{tau}{Length of observation period}
 
-\item{A}{Length of the enrollment period.}
+\item{A}{Length of the enrollment period}
 }
 \value{
 A matrix with columns containing the toxicity probabilities \code{ps}, the corresponding rejection probabilities, and the corresponding expected number of events. If \code{tau} and \code{A} are also specified, the expected numbers of enrolled patients and the expected calendar time at the point of stopping/study end are also included.

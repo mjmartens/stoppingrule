@@ -13,8 +13,8 @@
 #'
 #' @return A matrix with columns containing the toxicity probabilities \code{ps},
 #' the corresponding rejection probabilities, and the corresponding expected number
-#' of events. If \code{MC} is not NULL, the expected number of enrolled patients and total
-#' follow up time are also included.
+#' of events. If \code{MC} is not NULL, the expected number of enrolled patients
+#' and expected calendar time at the point of stopping/study end are also included.
 #'
 #' @details
 #' Operating characteristics are generated either by Monte Carlo estimation or computed
@@ -56,7 +56,7 @@ OC.rule.surv = function(rule,ps,MC,A,s=1){
     }
     else if (MC > 0) {
       tab[i,] = c(ps[i],op$power,op$ED,op$EN,op$EFU)
-      colnames(tab) = c('p',"Reject Prob", "E(Events)","E(Enrolled)","E(Total Follow up time)")
+      colnames(tab) = c("p","Reject Prob", "E(Events)","E(Enrolled)","E(Calendar Time)")
     }
     }
     return(tab)

@@ -4,7 +4,7 @@
 #' @param rule A \code{rule.bin} object calculated by \code{calc.rule.bin()} function
 #' @param ps A vector of toxicity probabilities at which the operating characteristics will be computed
 #' @param tau Length of observation period
-#' @param A Length of the enrollment period.
+#' @param A Length of the enrollment period
 #'
 #' @return A matrix with columns containing the toxicity probabilities \code{ps}, the corresponding rejection probabilities, and the corresponding expected number of events. If \code{tau} and \code{A} are also specified, the expected numbers of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
 #'
@@ -36,7 +36,7 @@ OC.rule.bin = function(rule, ps, tau = NULL, A = NULL) {
       op = opchars.bin(rule = rule,p = ps[i], A = A, tau = tau)
       tab[i,] = c(ps[i],op$power, op$exp.toxicities, op$exp.enrolled, op$exp.calendar)
     }
-    colnames(tab) = c("p","Reject Prob","E(events)","E(Enrolled)", "E(CalendarTime)")
+    colnames(tab) = c("p","Reject Prob","E(Events)","E(Enrolled)", "E(Calendar Time)")
     return(tab)
   } else {
     tab = matrix(0,nrow=length(ps),ncol=3)

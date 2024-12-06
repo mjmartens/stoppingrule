@@ -20,8 +20,8 @@ OC.rule.surv(rule, ps, MC, A, s = 1)
 \value{
 A matrix with columns containing the toxicity probabilities \code{ps},
 the corresponding rejection probabilities, and the corresponding expected number
-of events. If \code{MC} is not NULL, the expected number of enrolled patients and total
-follow up time are also included.
+of events. If \code{MC} is not NULL, the expected number of enrolled patients
+and expected calendar time at the point of stopping/study end are also included.
 }
 \description{
 Compute operating characteristics for a stopping rule at a set of toxicity rates.
