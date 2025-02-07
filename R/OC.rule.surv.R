@@ -49,7 +49,7 @@ OC.rule.surv = function(rule,ps,MC,A,s=1){
   if(MC>=0) {
     tab = matrix(0,nrow=length(ps),ncol=5-2*I(MC==0))
     for(i in 1:length(ps)) {
-    op = opchars.surv(rule,ps[i],MC,A,s=1)
+    op = opchars.surv(rule,ps[i],MC,A,s)
     if(MC==0) {
       tab[i,] = c(ps[i],op$power,op$ED)
       colnames(tab) = c('p',"Reject Prob", "E(Events)")
