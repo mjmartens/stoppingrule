@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#' # Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity probability of 20%
+#'\dontrun{# Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity probability of 20%
 #' poc_rule = calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="Pocock")
 #'
 #' # Bayesian beta-binomial method of Geller et al. in 50 patient cohort at 10% level,
@@ -23,6 +23,7 @@
 #' # Plot stopping boundary with smoothing
 #' plot(poc_rule,col="blue")
 #' lines(bb_rule,col="red")
+#'}
 
 plot.rule.bin = function(x,smooth=TRUE,xlim=c(0,max(x$ns)),
                      ylim=c(0,max(x$Rule[,2])+1),xlab="# Evaluable",

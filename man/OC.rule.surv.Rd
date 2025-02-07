@@ -37,7 +37,7 @@ it requires specification of the enrollment period length and shape parameter
 of the event distribution.
 }
 \examples{
-poc_rule = calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="Pocock",tau=100)
+\dontrun{ poc_rule = calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="Pocock",tau=100)
 gp_rule = calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="GP",tau=60,param=c(1,1000))
 OC.rule.surv(rule=poc_rule,ps=seq(0.2,0.4,0.05),MC=0)
 OC.rule.surv(rule=gp_rule,ps=seq(0.2,0.4,0.05),MC=0)
@@ -54,5 +54,5 @@ OC.rule.surv(rule=sp_rule,ps=ps,MC=1000,A=1095)
 gp_rule = calc.rule.surv(n=46,p0=0.15,alpha=0.10,type="GP",tau=100,
                           param=11.5*c(-log(1-0.15),100))
 OC.rule.surv(rule=gp_rule,ps=ps,MC=1000,A=1095)
-
+}
 }

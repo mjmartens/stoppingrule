@@ -18,6 +18,7 @@ A matrix with two columns: total follow up time and their corresponding rejectio
 Summarize a stopping rule in a condensed tabular format
 }
 \examples{
-gp_rule = calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="GP",tau=100,param=c(1,1000))
+\dontrun{gp_rule = calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="GP",tau=100,param=c(1,1000))
 table.rule.surv(gp_rule,2)
+}
 }

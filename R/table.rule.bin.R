@@ -8,10 +8,11 @@
 #'
 #' @examples
 #' # Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity probability of 20%
-#' poc_rule = calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="Pocock")
+#'\dontrun{poc_rule = calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="Pocock")
 #'
 #' # Tabulate stopping boundary
 #' table.rule.bin(poc_rule)
+#'}
 
 table.rule.bin = function(x) {
   rule = x$Rule

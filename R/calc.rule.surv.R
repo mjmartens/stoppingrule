@@ -18,11 +18,12 @@
 #' @return A rule.surv object, which is a list with the following elements: Rule, a two-column matrix with total follow-up times for each stage and their corresponding rejection boundaries; \code{n}; \code{p0}; \code{alpha}; \code{type}; \code{tau}; \code{param}; and cval, the boundary parameter for the rule
 #' @export
 #'
+#' @references Martens, M. J., Lian, Q., Geller, N. L., Leifer, E. S., and Logan, B. L. (2024). Sequential monitoring of time-to-event safety endpoints in clinical trials. \emph{Clinical Trials}, ePub ahead of print.
 #' @references Kulldorff, M., Davis, R. L., Kolczak, M., Lewis, E., Lieu, T., and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential Analysis}, \strong{30(1)}, 58–78.
 #' @references Zacks, S. and Mukhopadhyay, N. (2006). Exact risks of sequential point estimators of the exponential parameter. \emph{Sequential Analysis}, \strong{25(2)}, 203–226.
 #'
 #' @examples
-#' # Survival Pocock test in 50 patient cohort at 10% level, expected toxicity
+#'\dontrun{# Survival Pocock test in 50 patient cohort at 10% level, expected toxicity
 #' # probability of 20%, 100 day observation period
 #' calc.rule.surv(n=50,p0=0.20,alpha=0.10,type="Pocock",tau=100)
 #'
@@ -37,7 +38,7 @@
 #' # Truncated exponential SPRT with p1 = 0.3 in 100 patient cohort at 5% level,
 #' # expected toxicity probability of 10%, 60 day observation period
 #' calc.rule.surv(n=100,p0=0.10,alpha=0.05,type="SPRT",tau=60,param=0.3)
-#'
+#'}
 
 calc.rule.surv = function(n, p0, alpha, type, tau, maxInf="expected", param=NULL){
   cval = findconst.surv(n,p0,alpha,type,tau,param=param,maxInf=maxInf)

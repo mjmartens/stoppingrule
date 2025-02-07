@@ -26,7 +26,7 @@ A rule.bin object, which is a list with the following elements: Rule, a two-colu
 Calculate a stopping rule for safety monitoring, treating toxicities as binary data
 }
 \examples{
-# Binomial Pocock test in 50 patient cohort at 10\% level, expected toxicity
+\dontrun{# Binomial Pocock test in 50 patient cohort at 10\% level, expected toxicity
 # probability of 20\%
 calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="Pocock")
 
@@ -41,7 +41,7 @@ calc.rule.bin(ns=1:100,p0=0.10,alpha=0.05,type="BB",param=c(1,9))
 # Binomial truncated SPRT with p1 = 0.3 in 100 patient cohort at 5\% level,
 # expected toxicity probability of 10\%
 calc.rule.bin(ns=1:100,p0=0.10,alpha=0.05,type="SPRT",param=0.3)
-
+}
 }
 \references{
 Chen, C. and Chaloner, K. (2006). A Bayesian stopping rule for a single arm study: With a case study of stem cell transplantation. \emph{Statistics in Medicine} \strong{25(17)}, 2956-66.

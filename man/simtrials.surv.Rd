@@ -35,6 +35,7 @@ a toxicity rate of \code{p}. Enrollment times are simulated over an accrual
 period of duration \code{A} under a uniform (0,\code{A}) distribution.
 }
 \examples{
+\dontrun{
 set.seed(13)
 wt_rule = calc.rule.surv(n=46,p0=0.15,alpha=0.10,type="WT",tau=100,param=0.25)
 sims = simtrials.surv(rule=wt_rule,p=0.15,MC=1000,A=1095)
@@ -47,5 +48,5 @@ sims = simtrials.surv(rule=gp_rule,p=0.15,MC=1000,A=1095)
 c(mean(sims$stopped),mean(sims$n.Toxicity),mean(sims$n.Enrolled),mean(sims$Calendar.Time))
 sims = simtrials.surv(rule=gp_rule,p=0.35,MC=1000,A=1095)
 c(mean(sims$stopped),mean(sims$n.Toxicity),mean(sims$n.Enrolled),mean(sims$Calendar.Time))
-
+}
 }

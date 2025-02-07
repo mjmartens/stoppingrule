@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' # Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity probability of 20%
+#' \dontrun{# Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity probability of 20%
 #' poc_rule = calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="Pocock")
 #'
 #' # Bayesian beta-binomial method of Geller et al. in 50 patient cohort at 10% level,
@@ -24,6 +24,7 @@
 #' # Compute operating characteristics at toxicity probabilities of 20%, 25%, 30%, 35%, and 40%
 #' OC.rule.bin(rule=poc_rule,ps=seq(0.2,0.4,0.05))
 #' OC.rule.bin(rule=bb_rule,ps=seq(0.2,0.4,0.05),tau=30,A=730)
+#'}
 
 OC.rule.bin = function(rule, ps, tau = NULL, A = NULL) {
   ns = rule$Rule[,1]

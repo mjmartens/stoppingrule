@@ -8,9 +8,10 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' calc.rule(data.type="bin",ns=1:50,p0=0.20,alpha=0.10,type="WT",param=0.25)
 #' calc.rule(data.type="surv",n=50,p0=0.20,alpha=0.10,type="WT",tau=100,param=0.25)
-#'
+#'}
 calc.rule <- function(data.type, ...){
   if (tolower(data.type) == "surv"){
     calc.rule.surv(...)

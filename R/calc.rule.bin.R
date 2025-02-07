@@ -21,7 +21,7 @@
 #' @references Wang, S.K. and Tsiatis, A.A. (1987). Approximately optimal one-parameter boundaries for group sequential trials. \emph{Biometrics} \strong{193-199}.
 #'
 #' @examples
-#' # Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity
+#'\dontrun{# Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity
 #' # probability of 20%
 #' calc.rule.bin(ns=1:50,p0=0.20,alpha=0.10,type="Pocock")
 #'
@@ -36,7 +36,7 @@
 #' # Binomial truncated SPRT with p1 = 0.3 in 100 patient cohort at 5% level,
 #' # expected toxicity probability of 10%
 #' calc.rule.bin(ns=1:100,p0=0.10,alpha=0.05,type="SPRT",param=0.3)
-#'
+#'}
 
 calc.rule.bin = function(ns,p0,alpha,type,param=NULL,iter=50) {
   k = length(ns)
