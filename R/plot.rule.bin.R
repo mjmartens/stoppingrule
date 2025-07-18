@@ -30,11 +30,11 @@ plot.rule.bin = function(x,smooth=TRUE,xlim=c(0,max(x$ns)),
                      ylab="# Events",...) {
   if(smooth==TRUE){
     f = bdryfcn.bin(max(x$ns),x$p0,x$type,x$cval,x$param)
-    plot(NULL,xlim=xlim,ylim=ylim,xlab=xlab,ylab=ylab)
+    plot(NULL,xlim=xlim,ylim=ylim,xlab=xlab,ylab=ylab,las=1)
     curve(f,xlim=c(which(x$Rule[,1]>=x$Rule[,2])[1],max(x$ns)),add=TRUE,...)
   }
   else if(smooth==FALSE){
     tab = x$Rule; tab = tab[tab[,1]>=tab[,2],]; ltype = 's';
-    plot(tab,type=ltype,xlim=xlim,ylim=ylim,xlab=xlab,ylab=ylab,...)
+    plot(tab,type=ltype,xlim=xlim,ylim=ylim,xlab=xlab,ylab=ylab,las=1,...)
   }
 }
