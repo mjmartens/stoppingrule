@@ -13,7 +13,6 @@ License: GPL-3
 Encoding: UTF-8
 RoxygenNote: 7.3.2
 NeedsCompilation: no
-Packaged: 2025-02-07 03:51:45 UTC; mmartens
 Author: Michael J. Martens [aut, cre],
   Qinghua Lian [aut],
   Brent R. Logan [ctb]

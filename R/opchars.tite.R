@@ -12,7 +12,7 @@
 #' @return A list containing the toxicity probability \code{p}, and the corresponding rejection probability and expected number of events. If \code{tau} and \code{A} are also specified, the expected number of enrolled patients and the expected calendar time at the point of stopping/study end are also included.
 
 opchars.tite = function (rule, p, tau, MC, A, family, s) {
-  n = max(rule$ns)
+  n = rule$n
   sims = simtrials.tite(rule = rule, p = p, tau = tau, MC = MC, A=A, family = family, s=s)
   Reject.prob = mean(sims$stopped)
   Exp.tox = mean(sims$n.Toxicity)

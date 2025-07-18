@@ -35,7 +35,7 @@ simtrials.tite = function (rule, p, tau, MC, A, family, s) {
 
   p0 = rule$p0
   alpha = rule$alpha
-  n = max(rule$ns)
+  n = rule$n
   alldata = sim_tite_data(n = n * MC, p = p, tau = tau, A = A, family = family, s = s)
 
   # alldata$d = 1 * I(alldata$survtime <= tau) # Indicator for an event before tau

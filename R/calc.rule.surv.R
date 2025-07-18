@@ -8,7 +8,7 @@
 #' under an assumption that the cumulative number of events follows a Poisson process
 #' over the study duration.
 #' @param type The method used for constructing the stopping rule. Choices including a Pocock test ("Pocock"),
-#' a O'Brein-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian Gamma-Poisson method ("GP"),
+#' a O'Brien-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian Gamma-Poisson method ("GP"),
 #' a truncated sequential probability ratio test ("SPRT"), and a maximized SPRT ("MaxSPRT")
 #' @param maxInf Specification of the maximum information (maximum exposure time) used for designing the
 #' stopping rule. Options include the expected exposure time for n patients used H0 ("expected") and the
@@ -18,7 +18,8 @@
 #' @return A rule.surv object, which is a list with the following elements: Rule, a two-column matrix with total follow-up times for each stage and their corresponding rejection boundaries; \code{n}; \code{p0}; \code{alpha}; \code{type}; \code{tau}; \code{param}; and cval, the boundary parameter for the rule
 #' @export
 #'
-#' @references Martens, M. J., Lian, Q., Geller, N. L., Leifer, E. S., and Logan, B. L. (2024). Sequential monitoring of time-to-event safety endpoints in clinical trials. \emph{Clinical Trials}, ePub ahead of print.
+#' @references Martens, M. J., Lian, Q., Geller, N. L., Leifer, E. S., and Logan, B. L. (2025). Sequential monitoring of time-to-event safety endpoints in clinical trials. \emph{Clinical Trials}, \strong{22(3)}, 267–278.
+#' @references Kashiwabara, K., Matsuyama, Y., and Ohashi, Y. (2014). A Bayesian stopping rule for sequential monitoring of serious adverse events. \emph{Therapeutic Innovation & Regulatory Science}, \strong{48}, 444–452.
 #' @references Kulldorff, M., Davis, R. L., Kolczak, M., Lewis, E., Lieu, T., and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential Analysis}, \strong{30(1)}, 58–78.
 #' @references Zacks, S. and Mukhopadhyay, N. (2006). Exact risks of sequential point estimators of the exponential parameter. \emph{Sequential Analysis}, \strong{25(2)}, 203–226.
 #'

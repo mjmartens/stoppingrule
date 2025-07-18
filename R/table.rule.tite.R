@@ -2,6 +2,7 @@
 #' @description Summarize a stopping rule in a condensed tabular format
 #'
 #' @param x A \code{rule.tite} object calculated by \code{calc.rule.tite()} function
+#' @param dec Number of decimal places to which the stagewise effective sample sizes should be rounded
 #'
 #' @return A matrix with two columns: the ranges of effective sample sizes, and corresponding rejection boundaries for these ranges
 #' @export
@@ -16,18 +17,28 @@
 #' table.rule.tite(poc_rule)
 #'}
 
-table.rule.tite = function(x) {
+table.rule.tite = function(x,dec=3) {
   rule = x$Rule
-  n = max(rule[,1])
+  n = x$n
   lower = c(min(rule[,2]), head(rule[,1], -1))
   upper = rule[,1]
-  ess_range = sprintf("%.4f - %.4f", lower, upper)
+  ess_range = NULL
 
-  # If the last range doesn't end at n, update it to go to n
-  if (max(upper) < n) {
-    ess_range[length(ess_range)] = sprintf("%.4f - %.4f", upper[length(upper) - 1], n)
+  for (k in 1:(nrow(rule))){
+    if(k==1) {
+    ess_range[k] <- paste(sprintf(paste0("%.",dec,"f"),lower[k]),"-",
+                    sprintf(paste0("%.",dec,"f"),upper[k]))
+    }
+    else if(k==nrow(rule)){
+      ess_range[k] <- paste(sprintf(paste0("%.",dec,"f"),lower[k]+10^-dec),"-",
+                            sprintf(paste0("%.",dec,"f"),n))
+
+    }
+    else {
+      ess_range[k] <- paste(sprintf(paste0("%.",dec,"f"),lower[k]+10^-dec),"-",
+                                sprintf(paste0("%.",dec,"f"),upper[k]))
+    }
   }
-
   val = cbind(ess_range, rule[,2])
   colnames(val) = c("Effective Sample Size","Toxicity")
 

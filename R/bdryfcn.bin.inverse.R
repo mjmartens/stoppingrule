@@ -60,7 +60,6 @@ bdryfcn.bin.inverse = function(b,n,p0,type,cval,param=NULL) {
     root_finder = function(x){
       val(x) - b
     }
-    # return(uniroot(root_finder, c(0, n))$root)
     return(uniroot(root_finder, c(1, n))$root)
   }
   inverse.val = Vectorize(inverse.val)

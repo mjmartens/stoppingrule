@@ -16,7 +16,7 @@ under an assumption that the cumulative number of events follows a Poisson proce
 over the study duration.}
 
 \item{type}{The method used for constructing the stopping rule. Choices including a Pocock test ("Pocock"),
-a O'Brein-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian Gamma-Poisson method ("GP"),
+a O'Brien-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian Gamma-Poisson method ("GP"),
 a truncated sequential probability ratio test ("SPRT"), and a maximized SPRT ("MaxSPRT")}
 
 \item{tau}{Length of observation period}
@@ -52,7 +52,9 @@ calc.rule.surv(n=100,p0=0.10,alpha=0.05,type="SPRT",tau=60,param=0.3)
 }
 }
 \references{
-Martens, M. J., Lian, Q., Geller, N. L., Leifer, E. S., and Logan, B. L. (2024). Sequential monitoring of time-to-event safety endpoints in clinical trials. \emph{Clinical Trials}, ePub ahead of print.
+Martens, M. J., Lian, Q., Geller, N. L., Leifer, E. S., and Logan, B. L. (2025). Sequential monitoring of time-to-event safety endpoints in clinical trials. \emph{Clinical Trials}, \strong{22(3)}, 267–278.
+
+Kashiwabara, K., Matsuyama, Y., and Ohashi, Y. (2014). A Bayesian stopping rule for sequential monitoring of serious adverse events. \emph{Therapeutic Innovation & Regulatory Science}, \strong{48}, 444–452.
 
 Kulldorff, M., Davis, R. L., Kolczak, M., Lewis, E., Lieu, T., and Platt, R. (2011). A maximized sequential probability ratio test for drug and vaccine safety surveillance. \emph{Sequential Analysis}, \strong{30(1)}, 58–78.
 

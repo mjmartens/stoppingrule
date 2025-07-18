@@ -7,7 +7,7 @@
 OC.rule(data.type, ...)
 }
 \arguments{
-\item{data.type}{Type of data, choices include 'bin' for binary data and 'surv' for time-to-event data}
+\item{data.type}{Data and monitoring strategy, choices include 'bin' for binary data, 'surv' for time-to-event data using Poisson approach, and 'tite' for time-to-event data using TITE method.}
 
 \item{...}{Other options to be passed to the corresponding operating characteristics calculation. Please refer to the corresponding \code{OC.rule()} function for more details}
 }
@@ -20,8 +20,11 @@ A wrapper function to compute operating characteristics for a stopping rule at a
 \examples{
 \dontrun{bb_rule = calc.rule(data.type="bin",ns=1:50,p0=0.20,alpha=0.10,type="BB",param=c(2,8))
 gp_rule = calc.rule(data.type="surv",n=50,p0=0.20,alpha=0.10,type="GP",tau=60,param=c(1,1000))
+poc_rule = calc.rule.tite(n=50, p0=0.2, alpha = 0.10, type = "Pocock")
 OC.rule(data.type="bin",rule=bb_rule,ps=seq(0.1, 0.5, 0.1))
 OC.rule(data.type="bin",rule=bb_rule,ps=seq(0.1, 0.5, 0.1),tau=60,A=730)
 OC.rule(data.type="surv",rule=gp_rule,ps=seq(0.1, 0.5, 0.1),MC=1000, A=730)
+OC.rule(data.type="tite",rule=poc_rule,ps=seq(0.2,0.4,0.05),
+MC=1000, tau=30,A=730, family='weibull', s=2)
 }
 }

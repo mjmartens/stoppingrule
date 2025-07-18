@@ -7,12 +7,12 @@
 bdryfcn(data.type, ...)
 }
 \arguments{
-\item{data.type}{Type of data, choices include 'bin' for binary data and 'surv' for time-to-event data}
+\item{data.type}{Data and monitoring strategy, choices include 'bin' for binary data, 'surv' for time-to-event data using Poisson approach, and 'tite' for time-to-event data using TITE method.}
 
 \item{...}{Other options to be passed to the corresponding stopping rule calculation. Please refer to the corresponding data type-specific \code{bdryfcn()} function for more details}
 }
 \value{
-A univariate function that defines the rejection boundary at any number of evaluable patients (binary data) or amount of follow-up time (time-to-event data)
+A univariate function that defines the rejection boundary at any number of evaluable patients (binary data), amount of follow-up time (time-to-event data), or effective sample size accounting for partial follow up (TITE method).
 }
 \description{
 A wrapper function to calculate the boundary for a given stopping rule for safety monitoring for time-to-event data or binary data

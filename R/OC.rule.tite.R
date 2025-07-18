@@ -2,7 +2,8 @@
 #' @description Compute operating characteristics for a stopping rule at a set of toxicity rates. Characteristics calculated include the overall rejection probability, the expected number of patients evaluated, and the expected number of events.
 #'
 #' @param rule A \code{rule.tite} object with the safety stopping rule for evaluation
-#' @param ps Vector or matrix of cumulative incidence probabilities at time \code{tau} for all causes. Should be a vector for survival (single-failure type) endpoints, and a matrix of column two for competing risks, with the first column being the event of interest and the second column being the competing event.
+#' @param ps Vector of cumulative incidence probabilities for toxicity at time \code{tau}
+#' @param ps.compt Vector of cumulative incidence probabilities for competing risks at time \code{tau} if competing risks are involved. Set to NULL if no competing risks exist.
 #' @param tau Length of observation period
 #' @param MC Number of Monte Carlo replicated datasets to simulate
 #' @param A Length of accrual period
@@ -25,7 +26,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Bayesian beta-binomial method of Geller et al. in 50 patient cohort at 10% level,
+#' # Bayesian beta-extended binomial method in 50 patient cohort at 10% level,
 #' # expected toxicity probability of 20%
 #' bb_rule = calc.rule.tite(n=50,p0=0.20,alpha=0.10,type="BB",param=c(2,8))
 #'
@@ -33,12 +34,13 @@
 #' OC.rule.tite(rule=bb_rule,ps=seq(0.2,0.4,0.05), MC =1000, tau=30,A=730, family = 'weibull', s = 2)
 #'}
 
-OC.rule.tite = function (rule, ps, MC, tau, A, family, s) {
+OC.rule.tite = function (rule, ps, ps.compt=NULL, MC, tau, A, family="power", s=1) {
   if (MC >= 0) {
-    if (is.null(dim(ps))){
+    ps = cbind(ps,ps.compt)
+    if (is.null(ps.compt)){
       tab = matrix(0, nrow = length(ps), ncol = 6)
       for (i in 1:length(ps)){
-        op = opchars.tite(rule = rule, p = ps[i], tau = tau, MC = MC, A = A, family = family, s = s)
+        op = opchars.tite(rule = rule, p = ps[i,], tau = tau, MC = MC, A = A, family = family, s = s)
         tab[i, ] = c(ps[i], 0, op$Reject.prob, op$Exp.tox, op$Exp.n, op$Exp.caltime)
       }
     } else {

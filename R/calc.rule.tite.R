@@ -4,7 +4,7 @@
 #' @param n Maximum sample size
 #' @param p0 The toxicity probability under the null hypothesis
 #' @param alpha The desired type I error / false positive rate for the stopping rule
-#' @param type The method used for constructing the TITE stopping rule. Choices include a Pocock test ("Pocock"), an O'Brien-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian beta-binomial method ("BB") proposed by Geller et al. 2003, a truncated SPRT ("SPRT"), and a maximized SPRT ("MaxSPRT").
+#' @param type The method used for constructing the TITE stopping rule. Choices include a Pocock test ("Pocock"), an O'Brien-Fleming test ("OBF"), a Wang-Tsiatis test ("WT"), the Bayesian beta-extended binomial method ("BB"), a truncated SPRT ("SPRT"), and a maximized SPRT ("MaxSPRT").
 #' @param param A vector of the extra parameter(s) needed for certain stopping rule methods. For Wang-Tsiatis tests, this is the Delta parameter. For the Geller et al. method, this is the vector of hyperparameters (a,b) for the beta prior on the toxicity probability. For truncated SPRT, this is the targeted alternative toxicity probability p1.
 #' @param iter The number of iterations used to search for the boundary
 #'
@@ -28,32 +28,47 @@
 # # O'Brien-Fleming test with p0=0.2 in 50 patients cohort at 10% level.
 # calc.rule.tite(n=50, p0=0.2,alpha=0.1, type = "OBF")
 #
-# # Beta-binomial test of Geller et al. 2003 with hyperparameters (1, 9) in 100
+# # Beta-extended binomial method with hyperparameters (1, 9) in 100
 # # patient cohort at 5% level, expected toxicity probability of 10%
 # calc.rule.tite(n=100,p0=0.10,alpha=0.05,type="BB",param=c(1,9))
 #
-# # Truncated SPRT test with p0=0.1 and targeted alternative toxicity rate of 0.3 in
+# # Truncated SPRT with p0=0.1 and targeted alternative toxicity rate of 0.3 in
 # # 100 patients cohort at 5% level.
 # calc.rule.tite(n=100,p0=0.10,alpha=0.05,type="SPRT",param=0.3)
 #
-# # Max SPRT test with p0=0.1 in a 50 patients cohort at 10% level
+# # MaxSPRT with p0=0.1 in a 50 patients cohort at 10% level
 # calc.rule.tite(n=50, p0=0.1, alpha = 0.1, type = "MaxSPRT")
 #'}
 
 
 calc.rule.tite <- function(n, p0, alpha, type, param = NULL, iter = 50){
-  rule <- calc.rule.bin(ns = 1:n, p0 = p0, alpha = alpha, type = type, param = param, iter = iter)
+  if(type=="Pocock") {
+    rule <- calc.rule.bin(ns = 1:n, p0 = p0, alpha = alpha, type = "WT", param = 0.5, iter = iter)
+  }
+  else {
+    rule <- calc.rule.bin(ns = 1:n, p0 = p0, alpha = alpha, type = type, param = param, iter = iter)
+  }
 
   # Get the minimum and maximum toxicity
   b.min <- min(which(rule$Rule[,1] >= rule$Rule[,2]))
   b.max <- max(rule$Rule[,2]) -1
 
   # Calculate the effective sample size (ess) for each integer valued toxicity
-  bdry.inverse <- bdryfcn.bin.inverse(b = b.min, n = n, p0=p0, type = type, cval = rule$cval, param = param)
+  if(type=="Pocock") {
+    bdry.inverse <- bdryfcn.bin.inverse(b = b.min, n = n, p0=p0, type = "WT", cval = rule$cval, param = 0.5)
+  }
+  else {
+    bdry.inverse <- bdryfcn.bin.inverse(b = b.min, n = n, p0=p0, type = type, cval = rule$cval, param = param)
+  }
   ess = bdry.inverse(b.min:b.max)
 
-  tox <- c(b.min:(b.max+1))
-  ess <- c(ess, n)
+  if(max(ess)==n) {
+    tox <- b.min:b.max
+  }
+  else {
+    tox <- c(b.min:(b.max+1))
+    ess <- c(ess, n)
+  }
 
   tab = cbind(ess, tox)
   colnames(tab) = c("Effective Sample Size","Toxicity")

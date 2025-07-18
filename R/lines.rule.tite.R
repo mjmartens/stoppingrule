@@ -11,7 +11,7 @@
 #'\dontrun{# Binomial Pocock test in 50 patient cohort at 10% level, expected toxicity probability of 20%
 #' poc_rule = calc.rule.tite(n=50,p0=0.20,alpha=0.10,type="Pocock")
 #'
-#' # Bayesian beta-binomial method of Geller et al. in 50 patient cohort at 10% level,
+#' # Bayesian beta-extended binomial method in 50 patient cohort at 10% level,
 #' # expected toxicity probability of 20%
 #' bb_rule = calc.rule.tite(n=50,p0=0.20,alpha=0.10,type="BB",param=c(2,8))
 #'
